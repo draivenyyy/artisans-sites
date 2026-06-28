@@ -1,0 +1,263 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be You Barber</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        a {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #fff;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo {
+            font-weight: 700;
+            color: #fff;
+        }
+        nav a {
+            margin-left: 32px;
+        }
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1a3a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        .tag {
+            display: inline-block;
+            background: rgba(47, 107, 255, 0.15);
+            color: #2F6BFF;
+            border: 1px solid rgba(47, 107, 255, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #888;
+            max-width: 500px;
+            line-height: 1.6;
+            margin: 0 0 32px;
+        }
+        .cta-button {
+            background: #2F6BFF;
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        .services {
+            background-color: #111111;
+            padding: 100px 40px;
+        }
+        .services h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 60px;
+        }
+        .service-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        @media (min-width: 768px) {
+            .service-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2F6BFF;
+            border-radius: 12px;
+            padding: 32px 24px;
+        }
+        .icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(47, 107, 255, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #2F6BFF;
+        }
+        .card h3 {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 0 0 10px;
+        }
+        .card p {
+            color: #888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .stats {
+            background-color: #2F6BFF;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .stat-label {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 4px;
+        }
+        .contact {
+            background-color: #0a0a0a;
+            padding: 100px 40px;
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 60px;
+        }
+        .contact p {
+            font-size: 1.3rem;
+            margin: 20px 0;
+        }
+        .contact a {
+            color: #2F6BFF;
+            font-weight: 600;
+        }
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+            padding: 24px 40px;
+            text-align: center;
+            color: #888;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Be You Barber</div>
+        <nav>
+            <a href="#home">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero" id="home">
+        <span class="tag">9 Rue Poterie 41100 Vendôme</span>
+        <h1>Be You Barber</h1>
+        <p>Votre barbier d'exception avec une note de 5/5. Réservez votre rendez-vous pour une coupe impeccable!</p>
+        <a href="#" class="cta-button">Réserver maintenant</a>
+    </section>
+    <section class="services" id="services">
+        <h2>Nos Services</h2>
+        <div class="service-grid">
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19.4 10.6l-1.5 1.5c-1-1-2.4-1.2-3.5-.6l-5.9-5.9c.5-.9 0-1.9-1-2.4s-2.2-.3-2.8.4l-.6.6c-.5.5-.7 1.2-.5 1.9l3.5 3.5-8.3 8.3c-.8.8-.8 2.1 0 2.9l4.2 4.2c.8.8 2.1.8 2.9 0l8.3-8.3 3.5 3.5c.7.2 1.4 0 1.9-.5l.6-.6c.7-.7.8-2 .4-2.8s-1.4-1.4-2.4-1l-5.9-5.9c-.6 1.1-.3 2.5.6 3.5l1.5-1.5c.4-.4.6-1 .6-1.6s-.2-1.2-.6-1.6l-1.5-1.5c-.8-.8-2.1-.8-2.9 0l-1.5 1.5c.4.4.9.6 1.6.6s1.2-.2 1.6-.6l1.5-1.5c1-1 1.2-2.4.6-3.5s-2.4-1.2-3.5-.6l-5.9 5.9c-1-1-1.4-2.4-.7-3.5s2.4-1.2 3.5-.6l6 6c1.1-.6 2.5-.3 3.5.7l1.5-1.5c.8-.8 2.2-.8 3 0s.8 2.2 0 3l-1.5 1.5c1 1 2.4 1.2 3.5.6l6-6c1.1.6 2.5.3 3.5-.7z"/></svg>
+                </div>
+                <h3>Coupe Homme</h3>
+                <p>Technique et finitions soignées pour un look impeccable.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.3 19.8l-3.7-3.7c-.2 0-.5.2-.7.4-1 .8-2.5.7-3.5-.3-1-1-1.1-2.5-.3-3.5.2-.2.4-.5.4-.7L4.2 3.7A2.964 2.964 0 001.8 3c-1.1 1 1-2.2-2 3 .9 2.6 2.2 7.6 2.2 7.6s5-1.3 7.6-2.2c.8 1.1 .9 2.6-.3 3.5-1 .8-.7 2.5.3 3.5s2.5 1.1 3.5-.3c.2-.2.4-.5.4-.7l3.7 3.7c.9.9 2.5.9 3.4 0s.9-2.4 0-3.4zm-6.3-6.3c-.4.5-1.1.5-1.5.1-.4-.4-.4-1.1.1-1.5.4-.4 1.1-.4 1.5.1.4.4.4 1.1-.1 1.5z"/></svg>
+                </div>
+                <h3>Coupe + Barbe</h3>
+                <p>Un duo complet avec taille et sculpture de barbe.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.84 3.44 8.82 8 9.77V22h10v-2.23c4.56-.95 8-4.93 8-9.77 0-5.52-4.48-12-12-12zm2 18h-2v-2h2v2zm2-3H8v-2h8v2zm1-3h-10v-2h10v2zm1-3H7v-2h10v2zm1-3H6V7h10v2z"/></svg>
+                </div>
+                <h3>Soin Barbe</h3>
+                <p>Rasage et hydratation premium pour un soin parfait.</p>
+            </div>
+        </div>
+    </section>
+    <section class="stats">
+        <div class="stat">
+            <span class="stat-number">5/5</span>
+            <span class="stat-label">Note Google</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">102</span>
+            <span class="stat-label">Avis Google</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">6j/7</span>
+            <span class="stat-label">Ouvert</span>
+        </div>
+    </section>
+    <section class="contact" id="contact">
+        <h2>Contactez-nous</h2>
+        <p>Téléphone : <a href="tel:+33699561975">+33 6 99 56 19 75</a></p>
+        <a href="[COLLE_TON_LIEN_DE_PAIEMENT_ICI]" class="cta-button">Obtenir mon site — 297€</a>
+        <p>Suivez-nous sur <a href="https://www.instagram.com/beyou_barber.fr">@beyou_barber.fr</a></p>
+    </section>
+    <footer>
+        © 2023 Be You Barber. Tous droits réservés.
+    </footer>
+</body>
+</html>
+```
