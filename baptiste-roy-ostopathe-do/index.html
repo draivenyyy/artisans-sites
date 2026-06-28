@@ -1,4 +1,4 @@
-Pour créer un site vitrine moderne et professionnel en une seule page pour Baptiste ROY, Ostéopathe D.O., nous allons utiliser HTML et CSS. Cette page inclura des sections clés telles que l'en-tête avec le nom et les coordonnées, une présentation, les services offerts, des témoignages de clients et une section de contact. Voici un exemple de code :
+Voici un exemple de code HTML/CSS pour un site vitrine d'une seule page pour Baptiste ROY, Ostéopathe D.O :
 
 ```html
 <!DOCTYPE html>
@@ -6,146 +6,136 @@ Pour créer un site vitrine moderne et professionnel en une seule page pour Bapt
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baptiste ROY - Ostéopathe D.O.</title>
+    <title>Baptiste ROY Ostéopathe D.O</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
+            padding: 0;
             color: #333;
-            background-color: #f4f4f4;
         }
 
         header {
-            background: #028090;
-            color: #fff;
-            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
             text-align: center;
         }
 
-        header h1 {
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            background-color: #4CAF50;
+        }
+
+        .hero {
+            background-image: url('osteopathy-background.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
             margin: 0;
-            font-size: 2.5em;
+            font-size: 3em;
         }
 
         .container {
-            width: 80%;
+            padding: 20px;
+            max-width: 800px;
             margin: 0 auto;
-            overflow: hidden;
-            padding: 20px;
         }
 
-        .section {
-            padding: 20px 0;
-        }
-
-        .section h2 {
-            margin: 0 0 20px;
-            font-size: 2em;
-        }
-
-        .intro, .contact-info {
-            font-size: 1.2em;
-            line-height: 1.8;
-        }
-
-        .services, .testimonials {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-
-        .service, .testimonial {
-            background: #fff;
-            margin: 10px;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: calc(33% - 40px);
-            box-sizing: border-box;
-        }
-
-        .service h3, .testimonial h3 {
-            margin-top: 0;
-            color: #028090;
+        .about, .contact {
+            margin-bottom: 50px;
         }
 
         footer {
-            background: #333;
-            color: #ddd;
             text-align: center;
-            padding: 10px 0;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
+            padding: 15px 0;
+            background-color: #333;
+            color: white;
         }
 
-        a {
-            color: #028090;
-            text-decoration: none;
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <h1>Baptiste ROY - Ostéopathe D.O.</h1>
-            <p>53 Bd Béranger, 37000 Tours, France | Tel : <a href="tel:+33634360528">+33 6 34 36 05 28</a></p>
-        </div>
-    </header>
+<header>
+    <h1>Baptiste ROY - Ostéopathe D.O</h1>
+</header>
 
-    <div class="container">
-        
-        <section class="section intro">
-            <h2>Présentation</h2>
-            <p>Bienvenue sur le site de Baptiste ROY, ostéopathe diplômé, situé à Tours. Spécialiste des soins ostéopathiques adaptés à tous, j’interviens pour améliorer votre bien-être et soulager vos douleurs.</p>
-        </section>
+<nav>
+    <a href="#about">À Propos</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+</nav>
 
-        <section class="section services">
-            <h2>Services</h2>
-            <div class="service">
-                <h3>Ostéopathie générale</h3>
-                <p>Approche globale pour traiter différentes problématiques corporelles.</p>
-            </div>
-            <div class="service">
-                <h3>Suivi sportif</h3>
-                <p>Accompagnement personnalisé pour les sportifs de tous niveaux.</p>
-            </div>
-            <div class="service">
-                <h3>Soins pour nourrissons</h3>
-                <p>Soins doux adaptés aux bébés pour favoriser leur développement harmonieux.</p>
-            </div>
-        </section>
+<div class="hero">
+    <h1>Soulagez vos douleurs naturellement</h1>
+</div>
 
-        <section class="section testimonials">
-            <h2>Témoignages</h2>
-            <div class="testimonial">
-                <h3>Marie D.</h3>
-                <p>Une approche douce et efficace, mes douleurs de dos se sont nettement atténuées après quelques séances. Je recommande vivement!</p>
-            </div>
-            <div class="testimonial">
-                <h3>Julien T.</h3>
-                <p>Super suivi durant ma préparation marathon. J'ai pu améliorer mes performances grâce aux conseils et soins prodigués.</p>
-            </div>
-            <div class="testimonial">
-                <h3>Emilie R.</h3>
-                <p>Baptiste a su prendre soin de mon bébé dès ses premières semaines. Un ostéopathe à l'écoute et très professionnel.</p>
-            </div>
-        </section>
+<div class="container">
+    <section id="about" class="about">
+        <h2>À Propos de Moi</h2>
+        <p>Je suis Baptiste ROY, votre ostéopathe D.O basé à Tours. Avec une approche holistique, je m'engage à vous aider à retrouver une santé optimale grâce à des techniques manuelles adaptées à vos besoins spécifiques. Mon cabinet est un espace dédié au bien-être et à la guérison, où chaque patient est traité individuellement.</p>
+    </section>
 
-        <section class="section contact-info">
-            <h2>Contact</h2>
-            <p>Pour toute prise de rendez-vous ou information complémentaire, n'hésitez pas à me contacter par téléphone au <a href="tel:+33634360528">+33 6 34 36 05 28</a> ou à vous rendre directement à mon cabinet situé au 53 Bd Béranger, 37000 Tours.</p>
-        </section>
-    </div>
+    <section id="services" class="services">
+        <h2>Services</h2>
+        <ul>
+            <li>Ostéopathie Générale</li>
+            <li>Ostéopathie Sportive</li>
+            <li>Ostéopathie Pédiatrique</li>
+            <li>Ostéopathie pour Femmes Enceintes</li>
+        </ul>
+    </section>
 
-    <footer>
-        <p>&copy; 2023 Baptiste ROY - Ostéopathe D.O. | Design par OpenAI</p>
-    </footer>
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Baptiste ROY - Ostéopathe D.O</p>
+        <p>53 Bd Béranger, 37000 Tours, France</p>
+        <p>Téléphone : <a href="tel:+33634360528">+33 6 34 36 05 28</a></p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2023 Baptiste ROY - Tous droits réservés.</p>
+</footer>
 
 </body>
 </html>
 ```
 
-Ce code fournit une présentation simple mais élégante en une seule page, adaptée aux besoins d'un professionnel ostéopathe. La structure en sections permet de naviguer facilement à travers les informations. Les styles CSS assurent une lisibilité et une esthétique professionnelle.
+Assurez-vous d'ajouter une image de fond appropriée pour la classe `.hero` en remplaçant `'osteopathy-background.jpg'` par le chemin de votre image souhaitée. Ce code utilise une structure HTML simple et un style CSS basique pour créer une apparence moderne et professionnelle.
