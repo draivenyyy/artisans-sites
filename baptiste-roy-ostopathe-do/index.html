@@ -1,4 +1,4 @@
-Bien sûr ! Ci-dessous, vous trouverez un exemple de code HTML/CSS pour créer un site vitrine moderne et professionnel en une seule page pour Baptiste ROY, Ostéopathe D.O. Ce design est réactif, minimaliste et met l'accent sur les informations clés.
+Pour créer un site vitrine moderne et professionnel pour Baptiste ROY, Ostéopathe D.O., voici un exemple de code HTML/CSS que vous pouvez utiliser. Ce site est une page unique avec des sections pour les informations principales, les services offerts, le contact et une carte intégrée.
 
 ```html
 <!DOCTYPE html>
@@ -6,119 +6,122 @@ Bien sûr ! Ci-dessous, vous trouverez un exemple de code HTML/CSS pour créer u
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baptiste ROY - Ostéopathe D.O</title>
+    <title>Baptiste ROY - Ostéopathe D.O.</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             color: #333;
-            background-color: #f4f4f4;
         }
         header {
-            background-color: #35424a;
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #35424a;
-        }
-        nav a {
-            color: #ffffff;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        nav a:hover {
-            background-color: #e8491d;
-        }
-        .hero {
-            background: url('osteo-bg.jpg') no-repeat center center/cover;
-            height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ffffff;
-            text-align: center;
-        }
-        .hero h1 {
-            font-size: 3em;
-            margin: 0;
-        }
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-            overflow: hidden;
-        }
-        .services, .contact {
-            background-color: #ffffff;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .services h2, .contact h2 {
-            color: #35424a;
-        }
-        footer {
-            background-color: #35424a;
-            color: #ffffff;
+            background-color: #008080;
+            color: white;
             text-align: center;
             padding: 10px 0;
         }
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-            }
+        nav {
+            background-color: #f2f2f2;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #333;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .hero {
+            background-image: url('path_to_image.jpg'); /* Add a professional image path */
+            background-size: cover;
+            background-position: center;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 1px 1px 2px #000;
+        }
+        .hero h1 {
+            font-size: 3em;
+        }
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+        .services, .contact {
+            padding: 40px 0;
+        }
+        .services h2, .contact h2 {
+            margin-bottom: 20px;
+        }
+        .services-list, .contact-info {
+            list-style: none;
+            padding: 0;
+        }
+        .services-list li, .contact-info li {
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #f2f2f2;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .map {
+            width: 100%;
+            height: 300px;
+            border: none;
         }
     </style>
 </head>
 <body>
-
     <header>
-        <h1>Baptiste ROY - Ostéopathe D.O</h1>
-        <p>53 Bd Béranger, 37000 Tours, France</p>
+        <h1>Baptiste ROY - Ostéopathe D.O.</h1>
     </header>
-
+    
     <nav>
         <a href="#services">Services</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <section class="hero">
-        <h1>Soulager votre corps, améliorer votre vie</h1>
+        <div>
+            <h1>Votre Santé, Notre Priorité</h1>
+        </div>
     </section>
 
-    <div class="container">
+    <div class="content">
         <section id="services" class="services">
-            <h2>Mes Services</h2>
-            <p>Avec plusieurs années d'expérience, je vous propose des soins adaptés pour améliorer votre bien-être physique. Mes spécialités incluent le traitement des douleurs musculaires, des problèmes de posture, des maux de tête, et bien plus encore.</p>
+            <h2>Services</h2>
+            <ul class="services-list">
+                <li>Ostéopathie Générale</li>
+                <li>Ostéopathie Sportive</li>
+                <li>Ostéopathie Pédiatrique</li>
+                <li>Ostéopathie Pré et Postnatale</li>
+            </ul>
         </section>
 
         <section id="contact" class="contact">
-            <h2>Contactez-moi</h2>
-            <p>Pour toute information ou prise de rendez-vous, vous pouvez me contacter au numéro suivant :</p>
-            <p>Téléphone : <strong>+33 6 34 36 05 28</strong></p>
-            <p>Ou visitez-moi directement à l'adresse suivante :</p>
-            <p>53 Bd Béranger, 37000 Tours, France</p>
+            <h2>Contact</h2>
+            <ul class="contact-info">
+                <li>Adresse : 53 Bd Béranger, 37000 Tours, France</li>
+                <li>Téléphone : +33 6 34 36 05 28</li>
+            </ul>
+            <h3>Localisation</h3>
+            <iframe
+                class="map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2721.532318779883!2d0.6872308156812481!3d47.39004597917108!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e4fd4866c1d87b%3A0x5318f097c7cf1b43!2s53%20Boulevard%20B%C3%A9ranger%2C%2037000%20Tours%2C%20France!5e0!3m2!1sfr!2sus!4v1698583170803!5m2!1sfr!2sus"
+                allowfullscreen=""
+                loading="lazy">
+            </iframe>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2023 Baptiste ROY - Tous droits réservés</p>
+        <p>&copy; 2023 Baptiste ROY Ostéopathe D.O.</p>
     </footer>
-
 </body>
 </html>
 ```
 
-### Instructions additionnelles :
-- Ajoutez une image de fond appropriée et nommez-la `osteo-bg.jpg` ou modifiez le chemin si nécessaire.
-- Adaptez les styles CSS selon vos préférences ou la charte graphique souhaitée.
-- Ajoutez des animations CSS pour une interaction utilisateur plus dynamique.
-- Assurez-vous que le design soit testé sur différents appareils pour valider la réactivité.
+N'oubliez pas de remplacer `'path_to_image.jpg'` par le chemin réel de l'image d'arrière-plan que vous souhaitez utiliser pour la section "hero". Assurez-vous également que toutes les informations de contact et de localisation sont correctes et régulièrement mises à jour.
