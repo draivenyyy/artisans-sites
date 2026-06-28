@@ -1,0 +1,109 @@
+Voici un exemple de site vitrine en HTML/CSS pour Benjamin Morin et Bérengère Garcia, Ostéopathes :
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Morin & Bérengère Garcia - Ostéopathes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background: #008B8B;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+        nav a:hover {
+            background-color: #006b6b;
+            border-radius: 5px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .intro, .contact-info, .services {
+            margin-bottom: 40px;
+        }
+        .services ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .services ul li {
+            background: #f4f4f4;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            background: #2f4f4f;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Benjamin Morin & Bérengère Garcia</h1>
+        <p>Ostéopathes à Tours</p>
+        <nav>
+            <a href="#home">Accueil</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="home" class="intro">
+            <h2>Bienvenue dans notre cabinet d'ostéopathie</h2>
+            <p>Nous sommes Benjamin Morin et Bérengère Garcia, ostéopathes qualifiés situés au cœur de Tours. Notre mission est de vous fournir des soins de qualité pour améliorer votre bien-être et votre santé physique.</p>
+        </section>
+
+        <section id="services" class="services">
+            <h2>Nos Services</h2>
+            <ul>
+                <li>Consultation en ostéopathie</li>
+                <li>Thérapie manuelle</li>
+                <li>Soins pour les sportifs</li>
+                <li>Approche personnalisée pour chaque patient</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="contact-info">
+            <h2>Contactez-nous</h2>
+            <p>Adresse: 86 Av. de Grammont, 37000 Tours</p>
+            <p>Téléphone: <a href="tel:0247200602">02 47 20 06 02</a></p>
+            <p>N'hésitez pas à prendre rendez-vous pour une consultation.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Benjamin Morin & Bérengère Garcia - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
+```
+
+Ce code HTML/CSS constitue une page simple mais professionnelle pour un cabinet d'ostéopathie. Il inclut des sections pour l'accueil, les services proposés, et les informations de contact, le tout en une seule page facile à naviguer.
