@@ -2,175 +2,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <title>Élite Plomberie Paris</title>
     <style>
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #fafafa;
-            color: #1a1a1a;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
         }
         header {
-            position: sticky;
-            top: 0;
-            background-color: #ffffff;
-            padding: 10px 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            z-index: 10;
+            background: #0a0a0a;
+            padding: 16px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid #1a1a1a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
-        nav a {
-            margin-left: 20px;
-            color: #1a1a1a;
+        header .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #ffffff;
+        }
+        header nav a {
+            color: #888888;
             text-decoration: none;
-            font-weight: 600;
+            margin-left: 32px;
+            transition: color 0.2s;
+        }
+        header nav a:hover {
+            color: #ffffff;
         }
         .hero {
             min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1a3a 100%);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
+            text-align: center;
             padding: 0 20px;
-            background-color: #ffffff;
+        }
+        .hero .tag {
+            background: rgba(47, 107, 255, 0.15);
+            color: #2F6BFF;
+            border: 1px solid rgba(47, 107, 255, 0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
         }
         .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4.5rem);
-            margin: 0;
-        }
-        .hero .subtitle, 
-        .hero .cta {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-        .cta {
-            background-color: #0057B8;
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
             color: #ffffff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
+            margin: 20px 0 16px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #888888;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+        .hero .cta {
+            background: #2F6BFF;
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
             text-decoration: none;
-            font-weight: 700;
-            transition: transform 0.3s;
+            margin-top: 32px;
+            display: inline-block;
+            transition: transform 0.2s;
         }
-        .cta:hover {
-            transform: scale(1.04);
+        .hero .cta:hover {
+            transform: scale(1.05);
         }
-        .services {
-            padding: 80px 20px;
+        #services {
+            background: #111111;
+            padding: 100px 40px;
+        }
+        #services h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 60px;
+        }
+        #services .grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 40px;
+            gap: 24px;
+            max-width: 1100px;
+            margin: auto;
         }
-        @media(min-width: 768px) {
-            .services {
+        @media (min-width: 768px) {
+            #services .grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
-        .card {
-            background-color: #ffffff;
+        #services .card {
+            background: #1a1a1a;
+            border: 1px solid #2F6BFF;
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            padding: 32px 24px;
+        }
+        #services .icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(47, 107, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #services .card h3 {
+            color: #ffffff;
+            font-size: 1.15rem;
+            margin-bottom: 10px;
+        }
+        #services .card p {
+            color: #888888;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        #stats {
+            background: #2F6BFF;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        #stats .stat {
             text-align: center;
-            transition: transform 0.3s;
-            opacity: 0;
-            visibility: hidden;
         }
-        .card:hover {
-            transform: scale(1.03);
+        #stats .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ffffff;
         }
-        .card svg {
-            width: 50px;
-            height: 50px;
-            margin-bottom: 15px;
-            fill: #0057B8;
+        #stats .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 4px;
         }
-        .trust {
-            padding: 80px 20px;
+        #contact {
+            background: #0a0a0a;
+            padding: 100px 40px;
             text-align: center;
         }
-        .trust .stat {
-            font-size: 2rem;
-            font-weight: 700;
+        #contact h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 60px;
+        }
+        #contact p {
+            font-size: 1.3rem;
             margin: 20px 0;
         }
-        .contact {
-            padding: 80px 20px;
-            text-align: center;
+        #contact a {
+            color: #2F6BFF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        #contact .payment-btn {
+            background: #2F6BFF;
+            color: #ffffff;
+            padding: 16px 36px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 16px;
+            transition: transform 0.2s;
+        }
+        #contact .payment-btn:hover {
+            transform: scale(1.05);
         }
         footer {
-            background-color: #ffffff;
-            padding: 20px;
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+            padding: 24px 40px;
             text-align: center;
-            border-top: 1px solid #ddd;
+            color: #888888;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
     <header>
-        <div>Élite Plomberie Paris</div>
+        <div class="logo">Élite Plomberie Paris</div>
         <nav>
-            <a href="#accueil">Accueil</a>
+            <a href="#hero">Accueil</a>
             <a href="#services">Services</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
-    <section class="hero" id="accueil">
-        <h1 class="hero-title">Expert en Plomberie à Paris</h1>
-        <p class="hero-sub">Des solutions fiables et rapides pour tous vos besoins en plomberie</p>
-        <a href="#contact" class="hero-cta">Contactez-nous</a>
+    <section class="hero" id="hero">
+        <div class="tag">Votre Plombier Professionnel à Paris</div>
+        <h1>Solutions de Plomberie Fiables</h1>
+        <p>Élite Plomberie Paris, votre artisan plombier de confiance pour tous vos besoins en plomberie à Paris.</p>
+        <a href="#contact" class="cta">Contactez-nous</a>
     </section>
-    <section class="services" id="services">
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M16 5c1.11 0 2 .89 2 2v10c0 1.11-.89 2-2 2H8c-1.11 0-2-.89-2-2V7c0-1.11.89-2 2-2h8m0-2H8c-2.21 0-4 1.79-4 4v10c0 2.21 1.79 4 4 4h8c2.21 0 4-1.79 4-4V7c0-2.21-1.79-4-4-4z"/>
-            </svg>
-            <h2>Réparation de fuites</h2>
-            <p>Interventions rapides pour réparer toutes vos fuites d'eau.</p>
-        </div>
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M21 15.48L23 18l-8 8H9l-8-8 2-2.52V15h4V9a5 5 0 015-5 5 5 0 015 5v6h4v.48z"/>
-            </svg>
-            <h2>Installation de chauffe-eaux</h2>
-            <p>Installation rapide et professionnelle de vos nouveaux équipements.</p>
-        </div>
-        <div class="card">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path d="M1,21H23L12,2M15,11H9V13H15V11M15,15H9V17H15V15Z"/>
-            </svg>
-            <h2>Débouchage de canalisations</h2>
-            <p>Service d'urgence pour déboucher vos canalisations rapidement.</p>
+    <section id="services">
+        <h2>Nos Services</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 18c2.761 0 5-2.239 5-5s-2.239-5-5-5-5 2.239-5 5 2.239 5 5 5zm10-9v-2h-2v-2h-2v2h-16v-2h-2v2h-2v2h2v4h-2v2h2v2h2v-2h16v2h2v-2h2v-2h-2v-4h2zm-4 4h-16v-4h16v4z"/></svg>
+                </div>
+                <h3>Réparation de fuites urgente</h3>
+                <p>Nous intervenons rapidement pour toute fuite d'eau afin de minimiser les dommages et restaurer votre système.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 10.857l-7.357 2.643 5.357 3.5v6h4v-6l5.357-3.5-7.357-2.643zm-12 1.25l10 3.643 10-3.643v-7.107l-10-3.643-10 3.643v7.107z"/></svg>
+                </div>
+                <h3>Installation sanitaire</h3>
+                <p>Nos experts installent équipements sanitaires et veillent à leur bon fonctionnement et durabilité.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M13 10h8v2h-8zm9-5-3-3h-13l-3 3h19zm-12 3v2h-8v-2h8zm-8 4h8v2h-8zm0 4h14v2h-14zm0 4h16v2h-16z"/></svg>
+                </div>
+                <h3>Débouchage canalisations</h3>
+                <p>Service de débouchage rapide et efficace pour toutes vos canalisations et tuyauteries.</p>
+            </div>
         </div>
     </section>
-    <section class="trust">
-        <div class="stat">10+ ans d'expérience</div>
-        <div class="stat">5000+ clients satisfaits</div>
-        <div class="stat">Note Google : 4.9/5</div>
+    <section id="stats">
+        <div class="stat">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">ans d'expérience</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">clients satisfaits</div>
+        </div>
+        <div class="stat">
+            <div class="stat-number">4.9/5</div>
+            <div class="stat-label">note</div>
+        </div>
     </section>
-    <section class="contact" id="contact">
-        <p>Téléphone : <a href="tel:+33612345678">+33 6 12 34 56 78</a></p>
-        <a class="cta" href="https://buy.stripe.com/exemple">Obtenir mon devis — 297€</a>
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <p>Appelez-nous au <a href="tel:+33612345678">+33 6 12 34 56 78</a> pour une intervention rapide.</p>
+        <a href="[TON_LIEN_PAIEMENT]" class="payment-btn">Faire un paiement</a>
     </section>
     <footer>
-        © 2024 Élite Plomberie Paris
+        12 rue de Rivoli, 75001 Paris &mdash; Contact : +33 6 12 34 56 78
     </footer>
-    <script>
-        gsap.registerPlugin(ScrollTrigger);
-        const tl = gsap.timeline({defaults: {ease:'power2.out', duration: 0.7}});
-        tl.from('.hero-tag', {autoAlpha: 0, y: 20})
-          .from('.hero-title', {autoAlpha: 0, y: 40}, '-=0.4')
-          .from('.hero-sub', {autoAlpha: 0, y: 30}, '-=0.4')
-          .from('.hero-cta', {autoAlpha: 0, y: 20, scale: 0.95}, '-=0.3');
-        ScrollTrigger.batch('.card', {onEnter: els => gsap.to(els, {autoAlpha: 1, y: 0, stagger: 0.12, duration: 0.6, ease: 'power2.out'}), start: 'top 85%'});
-        gsap.utils.toArray('.stat').forEach((el, i) => gsap.from(el, {scrollTrigger: {trigger: el, start: 'top 80%'}, autoAlpha: 0, y: 30, duration: 0.5, delay: i * 0.1}));
-    </script>
 </body>
 </html>
