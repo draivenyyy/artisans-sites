@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PATRICK Plombier Paris 11</title>
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #ffffff;
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        header {
+            background: #0a0a0a;
+            border-bottom: 1px solid #1a1a1a;
+            padding: 16px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            position: sticky;
+            top: 0;
+        }
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #fff;
+        }
+        nav a {
+            color: #888;
+            margin-left: 28px;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #fff;
+        }
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #0d1a3a 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 24px;
+        }
+        .tag {
+            background: rgba(47,107,255,0.15);
+            color: #2F6BFF;
+            border: 1px solid rgba(47,107,255,0.3);
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            display: inline-block;
+        }
+        .hero h1 {
+            font-size: clamp(2.8rem, 6vw, 5rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 16px;
+            letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 1.15rem;
+            color: #888888;
+            max-width: 480px;
+            line-height: 1.6;
+            margin: 0 0 36px;
+        }
+        .btn-hero {
+            background: #2F6BFF;
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+        }
+        .btn-hero:hover {
+            transform: scale(1.04);
+        }
+        #services {
+            background: #111111;
+            padding: 90px 40px;
+        }
+        #services h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 56px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #2F6BFF;
+            border-radius: 12px;
+            padding: 28px 24px;
+        }
+        .icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(47,107,255,0.12);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+        .icon svg {
+            width: 24px;
+            height: 24px;
+            fill: #2F6BFF;
+        }
+        .card h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+        .card p {
+            color: #888;
+            font-size: 0.92rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .stats {
+            background: #2F6BFF;
+            padding: 56px 40px;
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            display: block;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: #fff;
+        }
+        .stat-label {
+            display: block;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.75);
+            margin-top: 4px;
+        }
+        #contact {
+            background: #0a0a0a;
+            padding: 90px 40px;
+            text-align: center;
+        }
+        #contact h2 {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            color: #fff;
+            margin: 0 0 56px;
+        }
+        .phone {
+            font-size: 1.25rem;
+            margin: 16px 0;
+            color: #fff;
+        }
+        .phone a {
+            color: #2F6BFF;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .btn-payment {
+            background: #2F6BFF;
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s ease;
+            margin-top: 20px;
+        }
+        footer {
+            background: #0a0a0a;
+            border-top: 1px solid #1a1a1a;
+            padding: 22px 40px;
+            text-align: center;
+            color: #888;
+            font-size: 0.84rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">PATRICK Plombier Paris 11</div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+    <section class="hero">
+        <span class="tag">Plombier professionnel</span>
+        <h1>PATRICK Plombier à votre service</h1>
+        <p class="subtitle">7 Rue Robert-Houdin, 75011 Paris<br>Téléphone: <a href="tel:0187588882">01 87 58 88 82</a></p>
+        <a href="https://whop.com/checkout/plan_4iusDAZZjMvtL" class="btn-hero">Obtenir mon site — 297€</a>
+    </section>
+    <section id="services">
+        <h2>Nos Services</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 1.5a.75.75 0 01.75.75v3a.75.75 0 11-1.5 0v-3A.75.75 0 0112 1.5zm8.25 14.25a.75.75 0 01.75.75v3.75a.75.75 0 01-.75.75h-3.75a.75.75 0 110-1.5h2.25V16.5a.75.75 0 01.75-.75zM8.25 21H4.5a.75.75 0 01-.75-.75V8.25a.75.75 0 011.5 0V19.5h2.25a.75.75 0 110 1.5zm13.5-14.25H19.5v2.25a.75.75 0 11-1.5 0V5.25a.75.75 0 011.5-.75h2.25a.75.75 0 01.75.75c0 .414-.336.75-.75.75zM4.5 3.75A.75.75 0 015.25 3h3.75a.75.75 0 010 1.5H6.75v3.75a.75.75 0 11-1.5 0V4.5c0-.414.336-.75.75-.75zm7.5 7.5a.75.75 0 110 1.5h-3a.75.75 0 110-1.5h3zm0 4.5a.75.75 0 110 1.5h-3a.75.75 0 110-1.5h3zm0 4.5a.75.75 0 110 1.5h-3a.75.75 0 110-1.5h3zm7.5-9a.75.75 0 010-1.5h-3.75a.75.75 0 010 1.5H19.5v2.25a.75.75 0 01-1.5 0V8.25c0-.414.336-.75.75-.75zM6 9a.75.75 0 110 1.5H3v1.5c0 .414-.336.75-.75.75S1.5 12.414 1.5 12v-3A.75.75 0 012.25 8h1.5a.75.75 0 01.75.75zm12 3a.75.75 0 010-1.5h3.75a.75.75 0 010 1.5H18v2.25c0 .414-.336.75-.75.75s-.75-.336-.75-.75V12zm-8.25 3c.414 0 .75.336.75.75v3a.75.75 0 01-1.5 0v-3c0-.414.336-.75.75-.75z"></path></svg>
+                </div>
+                <h3>Dépannage urgence 24h/24</h3>
+                <p>Intervention rapide toute heure.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M19.768 10l2.243 2.242a.75.75 0 01-1.06 1.061l-2.243-2.242A8.925 8.925 0 0012 9a8.925 8.925 0 00-6.708 2.303l-2.243 2.243a.75.75 0 01-1.06-1.061L6.708 9A8.925 8.925 0 0112 7c2.012 0 3.94.744 5.434 2.09L19.768 10zM9.237 13a9.143 9.143 0 009.492 9.491C21.715 22.491 22 21.547 22 21V7a5 5 0 00-5-5H7a5 5 0 00-5 5v14c0 .548.014 1.472 1.493 2.491A9.143 9.143 0 0012 14c1.158 0 2.267-.274 3.237-.764zm-6-4.407a1 1 0 111.493-.832.502.502 0 00.758-.102.978.978 0 011.443.057c.077.099.148.196.216.294a8.897 8.897 0 018.341-.308c.178.172.348.355.514.551a1 1 0 0-0.58 1.222 2 2 0 00-.664-1.052c-.154-.154-.317-.296-.484-.42A7.11 7.11 0 009.569 11a7.062 7.062 0 00-2.844.563A3.587 3.587 0 005.236 10a9.13 9.13 0 00-2.8.508z"></path></svg>
+                </div>
+                <h3>Installation sanitaire</h3>
+                <p>Pose de baignoire, douche, lavabo.</p>
+            </div>
+            <div class="card">
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 12.552a3.003 3.003 0 01-3 3h-2c0 1.197-.307 2.344-.877 3.341a1 1 0 11-1.632-1.163c.346-.591.51-1.273.509-1.934h2c.552 0 1-.449 1-1a1 1 0 112 0c0 1.103-.896 2-2 2h-1c0 .668-.265 1.316-.75 1.75a1 1 0 01-1.416-.015l-.943-.943a1 1 0 11.83-1.774c.226.495.627.8 1.083.992.456.194.756.6.756 1.2H15a5 5 0 005-5 1 1 0 112 0z"></path></svg>
+                </div>
+                <h3>Détection et réparation de fuites</h3>
+                <p>Intervention précise sur les fuites.</p>
+            </div>
+        </div>
+    </section>
+    <div class="stats">
+        <div class="stat">
+            <span class="stat-number">5/5</span>
+            <span class="stat-label">étoiles Google</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">19</span>
+            <span class="stat-label">avis clients</span>
+        </div>
+        <div class="stat">
+            <span class="stat-number">24/24</span>
+            <span class="stat-label">Disponible</span>
+        </div>
+    </div>
+    <section id="contact">
+        <h2>Contactez-nous</h2>
+        <p class="phone">Téléphone: <a href="tel:0187588882">01 87 58 88 82</a></p>
+        <a href="https://whop.com/checkout/plan_4iusDAZZjMvtL" class="btn-payment">Obtenir mon site — 297€</a>
+    </section>
+    <footer>
+        © 2023 PATRICK Plombier Paris 11. Tous droits réservés.
+    </footer>
+</body>
+</html>
