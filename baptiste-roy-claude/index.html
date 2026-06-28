@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baptiste ROY — Ostéopathe D.O | Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+  :root {
+    --bg: #FAF8F5;
+    --bg-2: #F3EFE8;
+    --surface: #FFFFFF;
+    --accent: #2D5A3D;
+    --accent-light: #4A7C5F;
+    --accent-pale: #EDF3EF;
+    --text: #1A1A18;
+    --text-dim: rgba(26,26,24,0.55);
+    --text-muted: rgba(26,26,24,0.35);
+    --line: rgba(45,90,61,0.1);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size: 16px; scroll-behavior: auto; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN overlay */
+  body::after {
+    content:'';
+    position:fixed; inset:0; pointer-events:none; z-index:9999;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.025; mix-blend-mode: multiply;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:200;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 24px 52px;
+    transition: background 0.5s, box-shadow 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(250,248,245,0.92);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .nav-brand {
+    display:flex; flex-direction:column; gap:2px;
+    text-decoration:none;
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px; color: var(--text); letter-spacing: -0.01em;
+  }
+  .nav-title-tag {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent); font-weight: 400;
+  }
+  .nav-menu { display:flex; align-items:center; gap:40px; }
+  .nav-menu a {
+    font-size: 13px; color: var(--text-dim);
+    text-decoration:none; font-weight:400;
+    transition: color 0.25s;
+  }
+  .nav-menu a:hover { color: var(--accent); }
+  .nav-rdv {
+    background: var(--accent); color: #fff !important;
+    padding: 10px 24px; font-size: 12px !important;
+    letter-spacing: 1px; text-transform: uppercase;
+    border-radius: 40px; transition: background 0.25s !important;
+  }
+  .nav-rdv:hover { background: var(--accent-light) !important; color: #fff !important; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100svh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 90px;
+    overflow: hidden;
+  }
+  .hero-left {
+    display:flex; flex-direction:column; justify-content:center;
+    padding: 80px 52px 80px 52px;
+  }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background: var(--accent-pale); border-radius: 40px;
+    padding: 6px 16px; margin-bottom: 36px;
+    width:fit-content; opacity:0;
+  }
+  .hero-badge-dot {
+    width:6px; height:6px; border-radius:50%;
+    background: var(--accent); animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.85)} }
+  .hero-badge-text { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--accent); font-weight:500; }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(44px, 4.5vw, 72px);
+    line-height: 1.05; letter-spacing: -0.025em;
+    color: var(--text); margin-bottom: 24px; opacity:0;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-lead {
+    font-size: 16px; color: var(--text-dim); line-height: 1.75;
+    max-width: 420px; margin-bottom: 44px; opacity:0;
+  }
+  .hero-ctas { display:flex; gap:12px; flex-wrap:wrap; opacity:0; }
+  .cta-main {
+    background: var(--accent); color:#fff;
+    padding: 14px 32px; border-radius:40px;
+    font-size:13px; letter-spacing:1px; text-transform:uppercase;
+    text-decoration:none; font-weight:500;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .cta-main:hover { background:var(--accent-light); transform:translateY(-1px); }
+  .cta-tel {
+    display:flex; align-items:center; gap:10px;
+    color: var(--text-dim); text-decoration:none;
+    font-size:14px; font-weight:400;
+    padding: 14px 20px; border:1px solid var(--line); border-radius:40px;
+    transition: all 0.25s;
+  }
+  .cta-tel:hover { border-color:var(--accent); color:var(--accent); }
+  .cta-tel svg { flex-shrink:0; }
+
+  .hero-right {
+    position:relative; overflow:hidden;
+    background: var(--bg-2);
+    clip-path: inset(0 0 0 0);
+  }
+  .hero-img-wrap {
+    position:absolute; inset:0;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .hero-img-placeholder {
+    width:100%; height:100%;
+    background: linear-gradient(145deg, #e8f0eb 0%, #c8dace 100%);
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px;
+  }
+  .hero-monogram {
+    font-family: 'DM Serif Display', serif;
+    font-size: 120px; color: rgba(45,90,61,0.12);
+    letter-spacing:-0.05em; line-height:1;
+  }
+  .hero-photo-label {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color: rgba(45,90,61,0.35); font-weight:400;
+  }
+  .hero-right-overlay {
+    position:absolute; inset:0;
+    background: linear-gradient(to right, var(--bg-2) 0%, transparent 20%);
+    pointer-events:none;
+  }
+  .hero-right-info {
+    position:absolute; bottom:40px; right:40px;
+    background:white; border-radius:16px;
+    padding:20px 24px; box-shadow:0 8px 32px rgba(0,0,0,0.08);
+    opacity:0;
+  }
+  .hero-right-info-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--accent); font-weight:500; margin-bottom:8px;
+  }
+  .hero-right-info-val { font-size:22px; font-weight:400; color:var(--text); }
+  .hero-right-info-sub { font-size:12px; color:var(--text-muted); margin-top:2px; }
+
+  /* ── SECTION BASE ── */
+  section { padding:100px 52px; }
+  .section-tag {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--accent); font-weight:500; display:block; margin-bottom:20px;
+  }
+  .h2 {
+    font-family:'DM Serif Display', serif;
+    font-size:clamp(32px, 3.5vw, 52px);
+    line-height:1.08; letter-spacing:-0.02em;
+    color:var(--text);
+  }
+  .h2 em { font-style:italic; color:var(--accent); }
+  .reveal { opacity:0; transform:translateY(28px); }
+
+  /* ── TRUST BAR ── */
+  .trust {
+    background:var(--surface);
+    padding:40px 52px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .trust-inner {
+    max-width:900px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-around; gap:40px;
+    flex-wrap:wrap;
+  }
+  .trust-item { text-align:center; }
+  .trust-num {
+    font-family:'DM Serif Display', serif;
+    font-size:40px; color:var(--accent); line-height:1;
+  }
+  .trust-label { font-size:12px; color:var(--text-muted); letter-spacing:1px; margin-top:4px; }
+
+  /* ── ABOUT ── */
+  .about { background:var(--bg); }
+  .about-inner {
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:center;
+  }
+  .about-text p { font-size:15px; color:var(--text-dim); line-height:1.85; margin-bottom:20px; }
+  .about-pills {
+    display:flex; flex-wrap:wrap; gap:8px; margin-top:32px;
+  }
+  .pill {
+    background:var(--accent-pale); color:var(--accent);
+    font-size:12px; letter-spacing:1px; text-transform:uppercase;
+    padding:7px 16px; border-radius:40px; font-weight:500;
+  }
+  .about-card {
+    background:var(--surface); border-radius:24px;
+    padding:48px 40px; box-shadow:0 4px 40px rgba(0,0,0,0.06);
+    display:flex; flex-direction:column; gap:32px;
+  }
+  .about-card-stat { border-bottom:1px solid var(--line); padding-bottom:28px; }
+  .about-card-stat:last-child { border:none; padding:0; }
+  .about-card-num {
+    font-family:'DM Serif Display', serif;
+    font-size:48px; color:var(--accent); line-height:1; margin-bottom:8px;
+  }
+  .about-card-desc { font-size:14px; color:var(--text-dim); line-height:1.6; }
+
+  /* ── SERVICES ── */
+  .services { background:var(--accent); }
+  .services-inner { max-width:1080px; margin:0 auto; }
+  .services .section-tag { color:rgba(255,255,255,0.5); }
+  .services .h2 { color:#fff; margin-bottom:64px; }
+  .services-grid {
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:rgba(255,255,255,0.12); border-radius:16px; overflow:hidden;
+  }
+  .service-card {
+    background:var(--accent); padding:40px 36px;
+    transition:background 0.3s;
+  }
+  .service-card:hover { background:var(--accent-light); }
+  .service-icon {
+    width:44px; height:44px; border-radius:12px;
+    background:rgba(255,255,255,0.12);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:24px; font-size:20px;
+  }
+  .service-card-name {
+    font-family:'DM Serif Display', serif;
+    font-size:20px; color:#fff; margin-bottom:12px; line-height:1.2;
+  }
+  .service-card-desc { font-size:13px; color:rgba(255,255,255,0.6); line-height:1.7; }
+
+  /* ── PROCESS ── */
+  .process { background:var(--bg-2); }
+  .process-inner { max-width:1080px; margin:0 auto; }
+  .process-steps {
+    display:flex; flex-direction:column; gap:0; margin-top:56px;
+  }
+  .process-step {
+    display:grid; grid-template-columns:80px 1fr;
+    padding:36px 0; border-bottom:1px solid var(--line);
+    gap:32px; align-items:flex-start;
+    transition: padding-left 0.3s;
+  }
+  .process-step:first-child { border-top:1px solid var(--line); }
+  .process-step:hover { padding-left:12px; }
+  .step-num {
+    font-family:'DM Serif Display', serif;
+    font-size:40px; color:var(--line); line-height:1; font-style:italic;
+    transition:color 0.3s;
+  }
+  .process-step:hover .step-num { color:var(--accent); }
+  .step-content-title {
+    font-size:18px; font-weight:500; color:var(--text); margin-bottom:8px;
+  }
+  .step-content-desc { font-size:14px; color:var(--text-dim); line-height:1.7; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { background:var(--bg); }
+  .testi-inner { max-width:1080px; margin:0 auto; }
+  .testi-grid {
+    display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:56px;
+  }
+  .testi-card {
+    background:var(--surface); border-radius:20px; padding:36px;
+    box-shadow:0 2px 24px rgba(0,0,0,0.04);
+    border:1px solid var(--line);
+    position:relative; overflow:hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .testi-card:hover { transform:translateY(-4px); box-shadow:0 8px 40px rgba(0,0,0,0.08); }
+  .testi-card:first-child { grid-column:span 2; }
+  .testi-quote {
+    font-family:'DM Serif Display', serif;
+    font-size:clamp(18px, 2vw, 22px); line-height:1.5;
+    color:var(--text); margin-bottom:24px; font-style:italic;
+  }
+  .testi-author { display:flex; align-items:center; gap:12px; }
+  .testi-avatar {
+    width:40px; height:40px; border-radius:50%;
+    background:var(--accent-pale); color:var(--accent);
+    display:flex; align-items:center; justify-content:center;
+    font-size:14px; font-weight:500; flex-shrink:0;
+  }
+  .testi-name { font-size:14px; font-weight:500; color:var(--text); }
+  .testi-role { font-size:12px; color:var(--text-muted); margin-top:2px; }
+  .testi-stars { color:var(--accent); font-size:12px; margin-bottom:16px; }
+  .testi-card-accent {
+    position:absolute; top:-30px; right:-30px;
+    width:100px; height:100px; border-radius:50%;
+    background:var(--accent-pale); opacity:0.4;
+  }
+
+  /* ── CONTACT ── */
+  .contact { background:var(--bg-2); }
+  .contact-inner {
+    max-width:1080px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1.2fr; gap:72px; align-items:start;
+  }
+  .contact-info { display:flex; flex-direction:column; gap:0; margin-top:36px; }
+  .info-row {
+    display:flex; flex-direction:column; gap:6px;
+    padding:24px 0; border-bottom:1px solid var(--line);
+  }
+  .info-row:first-child { border-top:1px solid var(--line); }
+  .info-tag { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:500; }
+  .info-val { font-size:16px; color:var(--text); font-weight:400; }
+  .info-val a { color:inherit; text-decoration:none; transition:color 0.25s; }
+  .info-val a:hover { color:var(--accent); }
+  .contact-form { background:var(--surface); border-radius:24px; padding:48px 44px; box-shadow:0 4px 40px rgba(0,0,0,0.06); }
+  .form-title {
+    font-family:'DM Serif Display', serif;
+    font-size:26px; margin-bottom:32px; color:var(--text);
+  }
+  .f-group { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+  .f-label { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--text-muted); font-weight:400; }
+  .f-input {
+    background:var(--bg); border:1.5px solid var(--line);
+    color:var(--text); padding:13px 16px; border-radius:10px;
+    font-family:'DM Sans', sans-serif; font-size:14px; font-weight:300;
+    outline:none; transition:border-color 0.25s;
+    resize:none;
+  }
+  .f-input:focus { border-color:var(--accent); }
+  .f-input::placeholder { color:var(--text-muted); }
+  .f-submit {
+    width:100%; padding:14px; border-radius:40px;
+    background:var(--accent); color:#fff; border:none; cursor:pointer;
+    font-family:'DM Sans', sans-serif; font-size:13px; letter-spacing:2px;
+    text-transform:uppercase; font-weight:500;
+    transition:background 0.25s, transform 0.25s;
+    margin-top:8px;
+  }
+  .f-submit:hover { background:var(--accent-light); transform:translateY(-1px); }
+
+  /* ── MAP STRIP ── */
+  .map-strip {
+    background:var(--accent-pale);
+    padding:48px 52px;
+    display:flex; align-items:center; justify-content:center; gap:60px;
+    flex-wrap:wrap;
+  }
+  .map-detail { display:flex; flex-direction:column; gap:4px; }
+  .map-detail-label { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--accent); font-weight:500; }
+  .map-detail-value { font-size:16px; color:var(--text); font-weight:400; }
+
+  /* ── FOOTER ── */
+  footer {
+    background:var(--text); color:rgba(255,255,255,0.5);
+    padding:40px 52px;
+    display:flex; align-items:center; justify-content:space-between; gap:20px;
+    flex-wrap:wrap;
+  }
+  .foot-brand {
+    font-family:'DM Serif Display', serif;
+    font-size:18px; color:rgba(255,255,255,0.85); letter-spacing:-0.01em;
+  }
+  .foot-copy { font-size:12px; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding:18px 24px; }
+    .nav-menu { display:none; }
+    .hero { grid-template-columns:1fr; min-height:auto; }
+    .hero-left { padding:100px 24px 48px; }
+    .hero-right { height:300px; }
+    section { padding:72px 24px; }
+    .about-inner, .contact-inner { grid-template-columns:1fr; gap:40px; }
+    .services-grid { grid-template-columns:1fr; }
+    .testi-grid { grid-template-columns:1fr; }
+    .testi-card:first-child { grid-column:span 1; }
+    .trust-inner { gap:24px; }
+    .map-strip { gap:32px; padding:36px 24px; }
+    footer { flex-direction:column; gap:12px; padding:32px 24px; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-name">Baptiste Roy</span>
+    <span class="nav-title-tag">Ostéopathe D.O — Tours</span>
+  </a>
+  <div class="nav-menu">
+    <a href="#about">À propos</a>
+    <a href="#services">Soins</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+33634360528" class="nav-rdv">+33 6 34 36 05 28</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge" id="hbadge">
+      <div class="hero-badge-dot"></div>
+      <span class="hero-badge-text">Cabinet ouvert — Tours</span>
+    </div>
+    <h1 id="htitle">
+      Votre corps<br>mérite un soin<br><em>attentionné</em>
+    </h1>
+    <p class="hero-lead" id="hlead">
+      Baptiste Roy, ostéopathe diplômé D.O à Tours. Une approche manuelle douce,
+      personnalisée et complète pour retrouver équilibre et bien-être durable.
+    </p>
+    <div class="hero-ctas" id="hctas">
+      <a href="#contact" class="cta-main">Prendre rendez-vous</a>
+      <a href="tel:+33634360528" class="cta-tel">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Appeler
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <div class="hero-img-placeholder">
+        <div class="hero-monogram">BR</div>
+        <div class="hero-photo-label">Portrait professionnel</div>
+      </div>
+    </div>
+    <div class="hero-right-overlay"></div>
+    <div class="hero-right-info" id="hcard">
+      <div class="hero-right-info-label">Satisfaction patients</div>
+      <div class="hero-right-info-val">97%</div>
+      <div class="hero-right-info-sub">1 500+ consultations</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item reveal">
+      <div class="trust-num" data-count="8">0</div>
+      <div class="trust-label">Ans d'expérience</div>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-num" data-count="1500">0</div>
+      <div class="trust-label">Patients accompagnés</div>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-num" data-count="97">0</div>
+      <div class="trust-label">% de satisfaction</div>
+    </div>
+    <div class="trust-item reveal">
+      <div class="trust-num">D.O</div>
+      <div class="trust-label">Diplôme reconnu état</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-text">
+      <span class="section-tag reveal">À propos</span>
+      <h2 class="h2 reveal">Une ostéopathie<br>globale, douce<br>& <em>efficace</em></h2>
+      <p class="reveal" style="margin-top:28px">
+        Diplômé D.O, j'accompagne mes patients dans la durée avec une approche manuelle
+        complète qui prend en compte l'ensemble du corps — structure, viscères, crâne.
+      </p>
+      <p class="reveal">
+        Chaque consultation commence par une écoute approfondie de vos symptômes,
+        de votre histoire et de votre mode de vie. Le traitement est toujours adapté,
+        jamais standardisé.
+      </p>
+      <div class="about-pills reveal">
+        <span class="pill">Adultes</span>
+        <span class="pill">Nourrissons</span>
+        <span class="pill">Sportifs</span>
+        <span class="pill">Femmes enceintes</span>
+        <span class="pill">Seniors</span>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <div class="about-card-stat">
+        <div class="about-card-num" data-count="8">0</div>
+        <div class="about-card-desc">Années de pratique clinique à Tours et en région Centre-Val de Loire</div>
+      </div>
+      <div class="about-card-stat">
+        <div class="about-card-num" data-count="1500">0</div>
+        <div class="about-card-desc">Patients reçus en cabinet, avec un suivi régulier pour la plupart</div>
+      </div>
+      <div class="about-card-stat">
+        <div class="about-card-num">5 ans</div>
+        <div class="about-card-desc">Formation à l'École Supérieure d'Ostéopathie, diplôme d'état reconnu</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-inner">
+    <span class="section-tag reveal">Soins proposés</span>
+    <h2 class="h2 reveal">Ce que je traite</h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🦴</div>
+        <div class="service-card-name">Douleurs du dos</div>
+        <div class="service-card-desc">Lombalgies, sciatiques, hernies discales, dorsalgies chroniques ou aiguës.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🤕</div>
+        <div class="service-card-name">Cervicales & tête</div>
+        <div class="service-card-desc">Cervicalgies, maux de tête, migraines, névralgies occipitales, vertiges.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🤸</div>
+        <div class="service-card-name">Sport & traumatismes</div>
+        <div class="service-card-desc">Entorses, tendinites, récupération musculaire, préparation aux compétitions.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">👶</div>
+        <div class="service-card-name">Pédiatrie</div>
+        <div class="service-card-desc">Nourrissons (plagiocéphalie, reflux, coliques) et enfants jusqu'à l'adolescence.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🤰</div>
+        <div class="service-card-name">Périnatalité</div>
+        <div class="service-card-desc">Suivi grossesse, douleurs pelviennes, préparation à l'accouchement, post-partum.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">💆</div>
+        <div class="service-card-name">Troubles viscéraux</div>
+        <div class="service-card-desc">Digestion, transit, reflux, tensions abdominales, syndrome du côlon irritable.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process">
+  <div class="process-inner">
+    <span class="section-tag reveal">Comment ça se passe</span>
+    <h2 class="h2 reveal">Une consultation<br>en <em>4 étapes</em></h2>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div>
+          <div class="step-content-title">Anamnèse & écoute</div>
+          <div class="step-content-desc">On commence par 15 minutes d'échange approfondi sur vos symptômes, vos antécédents et votre quotidien. Rien n'est anodin.</div>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">02</div>
+        <div>
+          <div class="step-content-title">Bilan ostéopathique</div>
+          <div class="step-content-desc">Analyse posturale, tests de mobilité, palpation — pour identifier les zones de restriction et comprendre les compensations de votre corps.</div>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">03</div>
+        <div>
+          <div class="step-content-title">Traitement personnalisé</div>
+          <div class="step-content-desc">Techniques douces adaptées à votre profil : manipulation, mobilisation, travail crânien ou viscéral selon les besoins identifiés.</div>
+        </div>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-num">04</div>
+        <div>
+          <div class="step-content-title">Conseils & suivi</div>
+          <div class="step-content-desc">En fin de séance, je vous donne des exercices et conseils posturaux. Un suivi à distance est possible entre les consultations.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testi-inner">
+    <span class="section-tag reveal">Témoignages</span>
+    <h2 class="h2 reveal">Ce que disent<br>mes <em>patients</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-card-accent"></div>
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Après trois séances, ma sciatique récurrente a totalement disparu. Baptiste prend vraiment le temps d'écouter et d'expliquer. Je recommande sans hésitation."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">ML</div>
+          <div>
+            <div class="testi-name">Marie-Louise P.</div>
+            <div class="testi-role">Patiente depuis 4 ans</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"Mon fils de 3 mois avait des coliques terribles. Deux séances ont tout changé. Doux, précis, efficace."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">SB</div>
+          <div>
+            <div class="testi-name">Sophie B.</div>
+            <div class="testi-role">Maman de patient</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"En tant que sportif, les séances de récupération avec Baptiste sont indispensables. Il comprend les contraintes du corps à l'effort."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">TC</div>
+          <div>
+            <div class="testi-name">Thomas C.</div>
+            <div class="testi-role">Triathlète amateur</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <span class="section-tag reveal">Contact & RDV</span>
+      <h2 class="h2 reveal">Prenons<br>rendez-vous</h2>
+      <div class="contact-info">
+        <div class="info-row reveal">
+          <span class="info-tag">Téléphone</span>
+          <span class="info-val"><a href="tel:+33634360528">+33 6 34 36 05 28</a></span>
+        </div>
+        <div class="info-row reveal">
+          <span class="info-tag">Adresse</span>
+          <span class="info-val">53 Bd Béranger<br>37000 Tours, France</span>
+        </div>
+        <div class="info-row reveal">
+          <span class="info-tag">Horaires</span>
+          <span class="info-val">Lun – Ven : 9h00 – 19h00<br>Sam : 9h00 – 13h00</span>
+        </div>
+        <div class="info-row reveal">
+          <span class="info-tag">Tarif</span>
+          <span class="info-val">Consultation : 60€ / 45–50 min</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-title">Envoyez un message</div>
+      <div class="f-group">
+        <label class="f-label">Nom complet</label>
+        <input type="text" class="f-input" placeholder="Jean Dupont">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Email</label>
+        <input type="email" class="f-input" placeholder="jean@email.com">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Téléphone</label>
+        <input type="tel" class="f-input" placeholder="+33 6 00 00 00 00">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Motif de consultation</label>
+        <textarea class="f-input" rows="3" placeholder="Décrivez brièvement votre problème..."></textarea>
+      </div>
+      <button class="f-submit">Envoyer</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAP STRIP -->
+<div class="map-strip">
+  <div class="map-detail reveal">
+    <span class="map-detail-label">Adresse</span>
+    <span class="map-detail-value">53 Bd Béranger, 37000 Tours</span>
+  </div>
+  <div class="map-detail reveal">
+    <span class="map-detail-label">Tram</span>
+    <span class="map-detail-value">Arrêt Beranger (ligne A)</span>
+  </div>
+  <div class="map-detail reveal">
+    <span class="map-detail-label">Parking</span>
+    <span class="map-detail-value">Parking Beranger à 50m</span>
+  </div>
+  <div class="map-detail reveal">
+    <span class="map-detail-label">Accessibilité</span>
+    <span class="map-detail-value">Cabinet accessible PMR</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="foot-brand">Baptiste Roy — Ostéopathe D.O</span>
+  <span class="foot-copy">© 2026 · Tours · Tous droits réservés</span>
+</footer>
+
+<script>
+  // Lenis
+  const lenis = new Lenis({ duration:1.1, easing:t=>Math.min(1,1.001-Math.pow(2,-10*t)) });
+  (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0);
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  gsap.timeline({delay:0.2})
+    .to('#hbadge', {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 0)
+    .to('#htitle', {opacity:1, y:0, duration:0.9, ease:'power3.out'}, 0.12)
+    .to('#hlead',  {opacity:1, y:0, duration:0.8, ease:'power3.out'}, 0.25)
+    .to('#hctas', {opacity:1, y:0, duration:0.7, ease:'power3.out'}, 0.38)
+    .to('#hcard', {opacity:1, y:0, duration:0.7, ease:'back.out(1.4)'}, 0.55);
+
+  // Navbar
+  ScrollTrigger.create({
+    start:'80px top',
+    onEnter:()=>document.getElementById('nav').classList.add('scrolled'),
+    onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')
+  });
+
+  // Reveal
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{
+      opacity:1, y:0, duration:0.85, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 88%', once:true}
+    });
+  });
+
+  // Counters
+  gsap.utils.toArray('[data-count]').forEach(el=>{
+    const n=parseInt(el.dataset.count);
+    ScrollTrigger.create({
+      trigger:el, start:'top 85%', once:true,
+      onEnter:()=>{
+        gsap.to({v:0},{v:n, duration:1.8, ease:'power2.out',
+          onUpdate:function(){ el.textContent=Math.round(this.targets()[0].v)+(n===97?'%':'+'); }
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
