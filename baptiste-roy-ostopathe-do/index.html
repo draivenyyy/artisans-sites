@@ -1,0 +1,132 @@
+Pour créer un site vitrine moderne et professionnel pour Baptiste ROY, Ostéopathe D.O, je vais te fournir un exemple de code HTML et CSS que tu pourras adapter et utiliser. Ce site sera composé d'une seule page, avec une structure simple mais élégante.
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baptiste ROY Ostéopathe D.O</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        nav {
+            background: #35424a;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            padding: 10px 15px;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        nav a:hover {
+            background: #777;
+        }
+
+        .hero {
+            background: url('https://www.example.com/hero-image.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+        }
+
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background: #35424a;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Baptiste ROY Ostéopathe D.O</h1>
+    </header>
+
+    <nav>
+        <a href="#about">À Propos</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="hero">
+        <h2>Bienvenue</h2>
+    </section>
+
+    <section id="about" class="content">
+        <h3>À Propos de Moi</h3>
+        <p>Bienvenue sur le site de Baptiste ROY, votre ostéopathe D.O à Tours. Je suis diplômé et expérimenté, prêt à vous aider avec des soins personnalisés afin de soulager vos douleurs.</p>
+    </section>
+
+    <section id="services" class="content">
+        <h3>Mes Services</h3>
+        <p>Je propose diverses thérapies adaptées à vos besoins, allant de l'ostéopathie structurelle à l'ostéopathie crânienne. Chaque séance est conçue pour restaurer votre équilibre et favoriser votre bien-être.</p>
+    </section>
+
+    <section id="contact" class="content">
+        <h3>Contact</h3>
+        <p>Adresse : 53 Bd Béranger, 37000 Tours, France</p>
+        <p>Tél : <a href="tel:+33634360528">+33 6 34 36 05 28</a></p>
+        <p>N'hésitez pas à me contacter pour plus d'informations ou pour prendre rendez-vous.</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Baptiste ROY Ostéopathe D.O. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
+```
+
+### Instructions pour l'utilisation:
+- Remplace l'URL de `'https://www.example.com/hero-image.jpg'` par le chemin de l'image de fond que tu souhaites utiliser pour la section héro.
+- Adapte le contenu du texte des sections pour mieux refléter les services particuliers proposés par Baptiste ROY.
+- Assure-toi que le site est hébergé sur un serveur pour pouvoir utiliser l'image de fond et tout autre média lié.
+- Modifie les styles CSS selon tes préférences pour affiner le design et l'apparence générale du site.
