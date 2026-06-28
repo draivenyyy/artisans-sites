@@ -1,4 +1,4 @@
-Voici un exemple de code HTML/CSS pour un site vitrine d'une seule page pour Baptiste ROY, Ostéopathe D.O :
+Créer un site vitrine moderne et professionnel en HTML/CSS pour Baptiste ROY, Ostéopathe D.O, est un excellent moyen de mettre en lumière ses compétences et de fournir des informations essentielles aux patients potentiels. Voici un exemple de site sur une seule page :
 
 ```html
 <!DOCTYPE html>
@@ -6,87 +6,62 @@ Voici un exemple de code HTML/CSS pour un site vitrine d'une seule page pour Bap
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Baptiste ROY Ostéopathe D.O</title>
+    <meta name="description" content="Site vitrine de Baptiste ROY, Ostéopathe D.O à Tours.">
+    <title>Baptiste ROY - Ostéopathe D.O</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
             padding: 0;
+            line-height: 1.6;
             color: #333;
         }
-
         header {
             background-color: #4CAF50;
-            color: white;
-            padding: 15px 0;
+            color: #fff;
+            padding: 1rem 0;
             text-align: center;
         }
-
         nav {
             display: flex;
             justify-content: center;
             background-color: #333;
         }
-
         nav a {
-            color: white;
-            padding: 15px;
+            color: #fff;
+            padding: 14px 20px;
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            background-color: #4CAF50;
-        }
-
-        .hero {
-            background-image: url('osteopathy-background.jpg');
-            background-size: cover;
-            background-position: center;
-            height: 300px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
             text-align: center;
+            transition: background-color 0.3s;
         }
-
-        .hero h1 {
-            margin: 0;
-            font-size: 3em;
+        nav a:hover {
+            background-color: #575757;
         }
-
         .container {
-            padding: 20px;
+            padding: 2rem;
             max-width: 800px;
             margin: 0 auto;
         }
-
-        .about, .contact {
-            margin-bottom: 50px;
+        .hero {
+            background: url('osteo-background.jpg') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 2rem;
         }
-
+        #services, #contact {
+            padding-top: 2rem;
+        }
         footer {
-            text-align: center;
-            padding: 15px 0;
             background-color: #333;
-            color: white;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
         }
-
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 2em;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                padding: 10px;
-            }
+        footer p {
+            margin: 0;
         }
     </style>
 </head>
@@ -94,48 +69,56 @@ Voici un exemple de code HTML/CSS pour un site vitrine d'une seule page pour Bap
 
 <header>
     <h1>Baptiste ROY - Ostéopathe D.O</h1>
+    <p>Situé à 53 Bd Béranger, 37000 Tours, France</p>
+    <p>Tel : +33 6 34 36 05 28</p>
 </header>
 
 <nav>
-    <a href="#about">À Propos</a>
+    <a href="#about">A propos</a>
     <a href="#services">Services</a>
     <a href="#contact">Contact</a>
 </nav>
 
-<div class="hero">
-    <h1>Soulagez vos douleurs naturellement</h1>
-</div>
+<section class="hero">
+    <div>Bienvenue chez votre Ostéopathe</div>
+</section>
 
 <div class="container">
-    <section id="about" class="about">
-        <h2>À Propos de Moi</h2>
-        <p>Je suis Baptiste ROY, votre ostéopathe D.O basé à Tours. Avec une approche holistique, je m'engage à vous aider à retrouver une santé optimale grâce à des techniques manuelles adaptées à vos besoins spécifiques. Mon cabinet est un espace dédié au bien-être et à la guérison, où chaque patient est traité individuellement.</p>
+    <section id="about">
+        <h2>A propos</h2>
+        <p>Baptiste ROY, Ostéopathe D.O, vous accueille au cabinet à Tours pour des consultations sur rendez-vous. Fort d'une expérience étendue et d'une approche holistique de l'ostéopathie, Baptiste s'engage à fournir des soins personnalisés adaptés à vos besoins spécifiques.</p>
     </section>
 
-    <section id="services" class="services">
+    <section id="services">
         <h2>Services</h2>
         <ul>
-            <li>Ostéopathie Générale</li>
-            <li>Ostéopathie Sportive</li>
-            <li>Ostéopathie Pédiatrique</li>
-            <li>Ostéopathie pour Femmes Enceintes</li>
+            <li>Consultation ostéopathique pour adultes et enfants</li>
+            <li>Soins pour sportifs</li>
+            <li>Suivi pour femmes enceintes</li>
+            <li>Traitement des douleurs chroniques</li>
         </ul>
     </section>
 
-    <section id="contact" class="contact">
+    <section id="contact">
         <h2>Contact</h2>
-        <p>Baptiste ROY - Ostéopathe D.O</p>
-        <p>53 Bd Béranger, 37000 Tours, France</p>
+        <p>Pour prendre rendez-vous ou pour toute information complémentaire :</p>
         <p>Téléphone : <a href="tel:+33634360528">+33 6 34 36 05 28</a></p>
+        <p>Adresse : 53 Bd Béranger, 37000 Tours, France</p>
+        <p>Email : <a href="mailto:contact@baptisteroy-osteo.fr">contact@baptisteroy-osteo.fr</a></p>
     </section>
 </div>
 
 <footer>
-    <p>&copy; 2023 Baptiste ROY - Tous droits réservés.</p>
+    <p>&copy; 2023 Baptiste ROY - Ostéopathe D.O. Tous droits réservés.</p>
 </footer>
 
 </body>
 </html>
 ```
 
-Assurez-vous d'ajouter une image de fond appropriée pour la classe `.hero` en remplaçant `'osteopathy-background.jpg'` par le chemin de votre image souhaitée. Ce code utilise une structure HTML simple et un style CSS basique pour créer une apparence moderne et professionnelle.
+### Instructions :
+1. **Images et ressources :** Remplacez `'osteo-background.jpg'` par une image de fond pertinente pour améliorer l'impact visuel. Assurez-vous que l'image est dans le même dossier ou spécifiez correctement le chemin.
+2. **Personnalisation :** Modifiez le contenu et les styles selon les préférences et les besoins spécifiques de Baptiste ROY.
+3. **Hébergement :** Hébergez ce fichier HTML sur un service d'hébergement web pour le rendre accessible au public.
+
+Cet exemple donne une structure de base et visuelle qui peut être améliorée et personnalisée pour refléter le style et le branding personnel de Baptiste ROY.
