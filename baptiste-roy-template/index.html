@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baptiste ROY — Ostéopathe D.O à Tours</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Satoshi:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+  :root {
+    --bg: #0A0A0A;
+    --bg-2: #111111;
+    --surface: #161616;
+    --accent: #8BAF9A;
+    --accent-dim: #5a7a68;
+    --text: #EBE8E0;
+    --text-dim: rgba(235,232,224,0.55);
+    --text-muted: rgba(235,232,224,0.3);
+    --line: rgba(139,175,154,0.12);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { font-size: 16px; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Satoshi', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* GRAIN */
+  body::before {
+    content:'';
+    position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: overlay;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0;
+    z-index: 100;
+    display: flex; align-items:center; justify-content:space-between;
+    padding: 28px 48px;
+    mix-blend-mode: normal;
+    transition: background 0.4s;
+  }
+  nav.scrolled { background: rgba(10,10,10,0.85); backdrop-filter: blur(12px); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .nav-links { display:flex; gap:36px; list-style:none; }
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--accent); text-decoration: none; border: 1px solid var(--accent);
+    padding: 10px 22px; transition: all 0.3s;
+  }
+  .nav-cta:hover { background: var(--accent); color: var(--bg); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 48px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(139,175,154,0.07) 0%, transparent 70%);
+  }
+  .hero-label {
+    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 32px; opacity: 0;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 110px);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    opacity: 0;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero-sub {
+    font-size: clamp(14px, 1.5vw, 16px);
+    color: var(--text-dim);
+    max-width: 480px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+    opacity: 0;
+  }
+  .hero-actions { display:flex; gap:16px; justify-content:center; opacity:0; }
+  .btn-primary {
+    padding: 14px 36px;
+    background: var(--accent); color: var(--bg);
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none; font-weight: 500;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: #9dbdac; transform: translateY(-2px); }
+  .btn-secondary {
+    padding: 14px 36px;
+    border: 1px solid var(--line);
+    color: var(--text-dim);
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .scroll-indicator {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    opacity: 0;
+  }
+  .scroll-line {
+    width: 1px; height: 60px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
+
+  /* SECTIONS */
+  section { padding: 120px 48px; }
+  .section-label {
+    font-size: 10px; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 24px;
+    display: block;
+  }
+  .reveal { opacity: 0; transform: translateY(32px); }
+
+  /* ABOUT */
+  .about { background: var(--bg-2); }
+  .about-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 28px;
+  }
+  .about p {
+    color: var(--text-dim); line-height: 1.8;
+    font-size: 15px; margin-bottom: 20px;
+  }
+  .about-visual {
+    aspect-ratio: 3/4;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-visual::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(139,175,154,0.08) 0%, transparent 60%);
+  }
+  .about-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px; opacity: 0.06; letter-spacing: -0.05em;
+    color: var(--accent);
+  }
+
+  /* SERVICES */
+  .services-grid {
+    max-width: 1100px; margin: 0 auto;
+  }
+  .services-header { margin-bottom: 64px; }
+  .services-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+  .services-list { display: flex; flex-direction: column; }
+  .service-item {
+    display: grid; grid-template-columns: 60px 1fr auto;
+    align-items: center; gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    cursor: default;
+    transition: all 0.3s;
+  }
+  .service-item:first-child { border-top: 1px solid var(--line); }
+  .service-item:hover { padding-left: 16px; }
+  .service-num {
+    font-size: 11px; letter-spacing: 2px;
+    color: var(--accent); font-weight: 500;
+  }
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300;
+    transition: color 0.3s;
+  }
+  .service-item:hover .service-name { color: var(--accent); }
+  .service-arrow { color: var(--text-muted); font-size: 18px; transition: transform 0.3s; }
+  .service-item:hover .service-arrow { transform: translateX(6px); color: var(--accent); }
+
+  /* STATS */
+  .stats { background: var(--surface); }
+  .stats-grid {
+    max-width: 900px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+    background: var(--line);
+  }
+  .stat-item {
+    background: var(--surface);
+    padding: 56px 48px; text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 80px);
+    font-weight: 300; line-height: 1;
+    color: var(--accent); margin-bottom: 12px;
+  }
+  .stat-label {
+    font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* CONTACT */
+  .contact { background: var(--bg-2); }
+  .contact-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+  }
+  .contact h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 64px);
+    font-weight: 300; line-height: 1.05;
+    letter-spacing: -0.02em; margin-bottom: 32px;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 24px; }
+  .contact-info-item { display: flex; flex-direction: column; gap: 6px; }
+  .contact-info-label {
+    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--accent);
+  }
+  .contact-info-value { font-size: 16px; color: var(--text-dim); }
+  .contact-info-value a { color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+  .contact-info-value a:hover { color: var(--accent); }
+  .contact-form { display: flex; flex-direction: column; gap: 20px; }
+  .form-group { display: flex; flex-direction: column; gap: 8px; }
+  .form-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); }
+  .form-input {
+    background: var(--surface); border: 1px solid var(--line);
+    color: var(--text); padding: 14px 16px;
+    font-family: 'Satoshi', sans-serif; font-size: 14px; font-weight: 300;
+    outline: none; transition: border-color 0.3s;
+    resize: none;
+  }
+  .form-input:focus { border-color: var(--accent); }
+  .form-input::placeholder { color: var(--text-muted); }
+
+  /* FOOTER */
+  footer {
+    padding: 48px;
+    border-top: 1px solid var(--line);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px; font-weight: 300; letter-spacing: 0.08em;
+    color: var(--text-muted);
+  }
+  .footer-copy { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; }
+
+  @media (max-width: 768px) {
+    nav { padding: 20px 24px; }
+    .nav-links { display: none; }
+    section { padding: 80px 24px; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .stats-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; align-items: center; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">Baptiste Roy — D.O</a>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#services">Soins</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:+33634360528" class="nav-cta">Prendre RDV</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div>
+    <p class="hero-label" id="hero-label">Ostéopathe D.O — Tours</p>
+    <h1 id="hero-title">L'équilibre<br>du <em>corps</em><br>& de l'esprit</h1>
+    <p class="hero-sub" id="hero-sub">
+      Une approche globale et bienveillante de l'ostéopathie,
+      au service de votre bien-être durable.
+    </p>
+    <div class="hero-actions" id="hero-actions">
+      <a href="#contact" class="btn-primary">Prendre rendez-vous</a>
+      <a href="#services" class="btn-secondary">Découvrir les soins</a>
+    </div>
+  </div>
+  <div class="scroll-indicator" id="scroll-indicator">
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-grid">
+    <div>
+      <span class="section-label reveal">À propos</span>
+      <h2 class="reveal">Une pratique centrée sur <em style="font-style:italic;color:var(--accent)">vous</em></h2>
+      <p class="reveal">
+        Ostéopathe diplômé D.O, je vous accompagne dans la prise en charge de vos douleurs
+        avec une approche manuelle douce et précise, adaptée à chaque patient.
+      </p>
+      <p class="reveal">
+        Du nourrisson au senior, des sportifs aux femmes enceintes — chaque consultation est
+        un moment d'écoute et de soin personnalisé, dans un cadre calme et bienveillant.
+      </p>
+    </div>
+    <div class="about-visual reveal">
+      <div class="about-placeholder">BR</div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="services-grid">
+    <div class="services-header">
+      <span class="section-label reveal">Soins proposés</span>
+      <h2 class="reveal">Des soins adaptés<br>à chaque besoin</h2>
+    </div>
+    <div class="services-list">
+      <div class="service-item reveal">
+        <span class="service-num">01</span>
+        <span class="service-name">Douleurs du dos & cervicales</span>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item reveal">
+        <span class="service-num">02</span>
+        <span class="service-name">Troubles musculo-squelettiques</span>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item reveal">
+        <span class="service-num">03</span>
+        <span class="service-name">Ostéopathie pédiatrique</span>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item reveal">
+        <span class="service-num">04</span>
+        <span class="service-name">Accompagnement grossesse</span>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item reveal">
+        <span class="service-num">05</span>
+        <span class="service-name">Ostéopathie du sportif</span>
+        <span class="service-arrow">→</span>
+      </div>
+      <div class="service-item reveal">
+        <span class="service-num">06</span>
+        <span class="service-name">Troubles viscéraux & digestifs</span>
+        <span class="service-arrow">→</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="8">0</div>
+      <div class="stat-label">Ans d'expérience</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="1500">0</div>
+      <div class="stat-label">Patients accompagnés</div>
+    </div>
+    <div class="stat-item reveal">
+      <div class="stat-num" data-count="97">0</div>
+      <div class="stat-label">% de satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-grid">
+    <div>
+      <span class="section-label reveal">Contact</span>
+      <h2 class="reveal">Prenons<br>rendez-vous</h2>
+      <div class="contact-info">
+        <div class="contact-info-item reveal">
+          <span class="contact-info-label">Téléphone</span>
+          <span class="contact-info-value"><a href="tel:+33634360528">+33 6 34 36 05 28</a></span>
+        </div>
+        <div class="contact-info-item reveal">
+          <span class="contact-info-label">Adresse</span>
+          <span class="contact-info-value">53 Bd Béranger<br>37000 Tours, France</span>
+        </div>
+        <div class="contact-info-item reveal">
+          <span class="contact-info-label">Horaires</span>
+          <span class="contact-info-value">Lun – Ven : 9h – 19h<br>Sam : 9h – 13h</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-group">
+        <label class="form-label">Nom complet</label>
+        <input type="text" class="form-input" placeholder="Jean Dupont">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="jean@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Téléphone</label>
+        <input type="tel" class="form-input" placeholder="+33 6 xx xx xx xx">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-input" rows="4" placeholder="Décrivez brièvement votre problème..."></textarea>
+      </div>
+      <button class="btn-primary" style="border:none;cursor:pointer;width:100%;justify-content:center">
+        Envoyer le message
+      </button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">Baptiste Roy — Ostéopathe D.O</span>
+  <span class="footer-copy">© 2026 — Tours, France</span>
+</footer>
+
+<script>
+  // Lenis smooth scroll
+  const lenis = new Lenis({ duration: 1.2, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+  function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+
+  // GSAP
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero entrance
+  gsap.timeline({ delay: 0.3 })
+    .to('#hero-label', { opacity:1, y:0, duration:0.8, ease:'power3.out' }, 0)
+    .to('#hero-title', { opacity:1, y:0, duration:1.0, ease:'power3.out' }, 0.15)
+    .to('#hero-sub',   { opacity:1, y:0, duration:0.9, ease:'power3.out' }, 0.3)
+    .to('#hero-actions', { opacity:1, y:0, duration:0.8, ease:'power3.out' }, 0.45)
+    .to('#scroll-indicator', { opacity:1, duration:0.6 }, 0.8);
+
+  // Navbar scroll
+  ScrollTrigger.create({
+    start: '80px top',
+    onEnter: () => document.getElementById('navbar').classList.add('scrolled'),
+    onLeaveBack: () => document.getElementById('navbar').classList.remove('scrolled'),
+  });
+
+  // Reveal on scroll
+  gsap.utils.toArray('.reveal').forEach(el => {
+    gsap.to(el, {
+      opacity: 1, y: 0, duration: 0.9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 85%', once: true }
+    });
+  });
+
+  // Counter animation
+  gsap.utils.toArray('[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    ScrollTrigger.create({
+      trigger: el, start: 'top 80%', once: true,
+      onEnter: () => {
+        gsap.to({ val: 0 }, {
+          val: target, duration: 2, ease: 'power2.out',
+          onUpdate: function() { el.textContent = Math.round(this.targets()[0].val) + (target === 97 ? '%' : '+'); }
+        });
+      }
+    });
+  });
+</script>
+</body>
+</html>
