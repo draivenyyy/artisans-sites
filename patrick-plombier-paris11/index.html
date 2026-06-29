@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Patrick Plombier Paris 11 — Plombier</title>
+<title>Patrick Plombier Paris 11 — Plombier à Paris</title>
+<meta name="description" content="Intervention rapide, tarifs transparents. Dépannage et installation pour particuliers et professionnels du 11e.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
@@ -15,6 +16,7 @@
 :root{
   --bg:#FAF8F5;
   --bg-2:#F3EFE8;
+  --bg-3:#EDEAE2;
   --surface:#FFFFFF;
   --accent:#2D5A3D;
   --accent-light:#3A7A52;
@@ -23,144 +25,247 @@
   --text-dim:rgba(26,26,24,.55);
   --text-muted:rgba(26,26,24,.35);
   --line:rgba(26,26,24,.08);
+  --line-strong:rgba(26,26,24,.14);
 }
 html{scroll-behavior:auto}
 body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
-body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.03;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-/* NAV */
-#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:24px 52px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,box-shadow .5s}
-#nav.scrolled{background:rgba(250,248,245,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line)}
-.nav-brand{display:flex;flex-direction:column;text-decoration:none}
-.nav-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--text)}
-.nav-title-tag{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-top:2px}
-.nav-menu{display:flex;align-items:center;gap:40px}
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:22px 52px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,box-shadow .5s}
+#nav.scrolled{background:rgba(250,248,245,.93);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--line)}
+.nav-brand{display:flex;flex-direction:column;text-decoration:none;gap:3px}
+.nav-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--text);line-height:1}
+.nav-title-tag{font-size:9px;text-transform:uppercase;letter-spacing:3px;color:var(--accent)}
+.nav-menu{display:flex;align-items:center;gap:36px}
 .nav-menu a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s}
 .nav-menu a:hover{color:var(--accent)}
-.nav-rdv{background:var(--accent);color:#fff;border-radius:40px;padding:10px 24px;font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:500;text-decoration:none;transition:background .2s}
-.nav-rdv:hover{background:var(--accent-light)}
+.nav-rdv{background:var(--accent);color:#fff!important;border-radius:40px;padding:10px 22px;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;transition:background .2s,transform .15s}
+.nav-rdv:hover{background:var(--accent-light)!important;transform:translateY(-1px)}
 
-/* HERO */
-.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;padding-top:90px}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 52px}
-#hbadge{opacity:0;transform:translateY(16px);background:var(--accent-pale);border-radius:40px;padding:6px 16px;display:inline-flex;align-items:center;gap:8px;margin-bottom:36px;width:fit-content}
-.hero-badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
-.hero-badge-text{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:500}
+/* ── HERO ── */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;padding-top:80px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 52px}
+#hbadge{opacity:0;transform:translateY(16px);background:var(--accent-pale);border-radius:40px;padding:7px 18px;display:inline-flex;align-items:center;gap:9px;margin-bottom:40px;width:fit-content}
+.hero-badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
+.hero-badge-text{font-size:10px;text-transform:uppercase;letter-spacing:2.5px;color:var(--accent);font-weight:500}
 #htitle{opacity:0;transform:translateY(24px)}
-#htitle h1{font-family:'DM Serif Display',serif;font-size:clamp(44px,4.5vw,72px);line-height:1.05;letter-spacing:-.025em;margin-bottom:24px}
+#htitle h1{font-family:'DM Serif Display',serif;font-size:clamp(40px,4.2vw,68px);line-height:1.06;letter-spacing:-.03em;margin-bottom:22px}
 #htitle h1 em{color:var(--accent);font-style:italic}
 #hlead{opacity:0;transform:translateY(20px)}
-#hlead p{font-size:16px;color:var(--text-dim);line-height:1.75;max-width:420px;margin-bottom:44px}
-#hctas{opacity:0;transform:translateY(16px);display:flex;gap:12px;flex-wrap:wrap}
-.cta-main{background:var(--accent);color:#fff;padding:14px 32px;border-radius:40px;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:500;text-decoration:none;transition:background .2s}
-.cta-main:hover{background:var(--accent-light)}
-.cta-tel{border:1px solid var(--line);border-radius:40px;padding:14px 20px;font-size:14px;color:var(--text-dim);display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:border-color .2s,color .2s}
+#hlead p{font-size:16px;color:var(--text-dim);line-height:1.75;max-width:400px;margin-bottom:40px}
+#hctas{opacity:0;transform:translateY(16px);display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.cta-main{background:var(--accent);color:#fff;padding:14px 30px;border-radius:40px;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;text-decoration:none;transition:background .2s,transform .15s}
+.cta-main:hover{background:var(--accent-light);transform:translateY(-1px)}
+.cta-tel{border:1.5px solid var(--line-strong);border-radius:40px;padding:13px 20px;font-size:14px;color:var(--text-dim);display:inline-flex;align-items:center;gap:9px;text-decoration:none;transition:border-color .2s,color .2s}
 .cta-tel:hover{border-color:var(--accent);color:var(--accent)}
-.cta-tel svg{width:14px;height:14px}
+.cta-tel svg{width:14px;height:14px;flex-shrink:0}
 .hero-right{background:var(--bg-2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.hero-monogram{font-family:'DM Serif Display',serif;font-size:140px;color:var(--accent);opacity:.1;user-select:none;line-height:1}
-.hero-photo-label{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--text-muted)}
-#hcard{position:absolute;bottom:40px;right:40px;background:var(--surface);border-radius:16px;padding:20px 24px;box-shadow:0 8px 32px rgba(0,0,0,.08);opacity:0;transform:translateY(16px)}
-.hcard-label{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:8px}
-.hcard-stars{font-size:22px;color:var(--accent);margin-bottom:4px}
-.hcard-avis{font-size:12px;color:var(--text-muted)}
+.hero-img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-monogram{font-family:'DM Serif Display',serif;font-size:160px;color:var(--accent);opacity:.08;user-select:none;line-height:1;position:absolute}
+#hcard{position:absolute;bottom:36px;right:36px;background:var(--surface);border-radius:16px;padding:18px 22px;box-shadow:0 8px 40px rgba(0,0,0,.1);opacity:0;transform:translateY(16px);min-width:160px}
+.hcard-label{font-size:9px;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:8px}
+.hcard-stars{font-size:20px;color:var(--accent);margin-bottom:4px;letter-spacing:1px}
+.hcard-avis{font-size:11px;color:var(--text-muted)}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.8)}}
 
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
-
-/* TRUST BAR */
-.trust-bar{background:var(--surface);padding:40px 52px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-around;align-items:center}
+/* ── TRUST BAR ── */
+.trust-bar{background:var(--surface);padding:44px 52px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;gap:20px}
 .trust-item{text-align:center}
-.trust-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--accent);line-height:1}
-.trust-label{font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+.trust-num{font-family:'DM Serif Display',serif;font-size:42px;color:var(--accent);line-height:1}
+.trust-label{font-size:11px;color:var(--text-muted);margin-top:6px;text-transform:uppercase;letter-spacing:1.5px}
 
-/* SERVICES */
+/* ── ABOUT ── */
+.about{background:var(--bg);padding:100px 52px}
+.about-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;display:block;background:var(--bg-2)}
+.about-img-placeholder{width:100%;aspect-ratio:4/5;border-radius:20px;background:var(--bg-2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px}
+.about-img-placeholder-mono{font-family:'DM Serif Display',serif;font-size:80px;color:var(--accent);opacity:.15}
+.about-badge{position:absolute;bottom:-20px;left:32px;background:var(--accent);color:#fff;border-radius:14px;padding:16px 20px;box-shadow:0 8px 30px rgba(0,0,0,.15)}
+.about-badge-num{font-family:'DM Serif Display',serif;font-size:32px;line-height:1}
+.about-badge-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;opacity:.8;margin-top:3px}
+.about-right .section-tag{margin-bottom:16px}
+.about-text{font-size:16px;color:var(--text-dim);line-height:1.85;margin-top:20px;margin-bottom:32px}
+.about-vals{display:flex;flex-direction:column;gap:0}
+.about-val{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.about-val:first-child{border-top:1px solid var(--line)}
+.about-val-icon{width:36px;height:36px;background:var(--accent-pale);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.about-val-text{font-size:14px;color:var(--text-dim)}
+.about-val-text strong{color:var(--text);font-weight:500}
+
+/* ── SECTION HELPERS ── */
+.section-tag{font-size:10px;text-transform:uppercase;letter-spacing:3px;font-weight:500;color:var(--accent)}
+.h2{font-family:'DM Serif Display',serif;font-size:clamp(30px,3.2vw,50px);line-height:1.1;letter-spacing:-.02em}
+.reveal{opacity:0;transform:translateY(28px)}
+
+/* ── SERVICES ── */
 .services{background:var(--accent);padding:100px 52px}
 .services-inner{max-width:1080px;margin:0 auto}
-.section-tag{font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px;font-weight:500}
-.services .section-tag{color:rgba(255,255,255,.5)}
-.h2{font-family:'DM Serif Display',serif;font-size:clamp(32px,3.5vw,52px);line-height:1.1;letter-spacing:-.02em;margin-bottom:64px}
-.services .h2{color:#fff}
-.services .h2 em{font-style:italic;opacity:.7}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:16px;overflow:hidden}
-.service-card{background:var(--accent);padding:40px 36px;transition:background .2s}
+.services .section-tag{color:rgba(255,255,255,.45)}
+.services .h2{color:#fff;margin-bottom:56px}
+.services .h2 em{font-style:italic;opacity:.65}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.1);border-radius:20px;overflow:hidden}
+.service-card{background:var(--accent);padding:40px 32px;transition:background .25s}
 .service-card:hover{background:var(--accent-light)}
-.service-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:24px}
-.service-card-name{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;margin-bottom:12px}
-.service-card-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
+.service-icon{width:48px;height:48px;border-radius:14px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:24px}
+.service-card-name{font-family:'DM Serif Display',serif;font-size:21px;color:#fff;margin-bottom:10px}
+.service-card-desc{font-size:13px;color:rgba(255,255,255,.55);line-height:1.75}
 
-/* CONTACT */
+/* ── TÉMOIGNAGES ── */
+.temoignages{background:var(--bg-2);padding:100px 52px}
+.temoignages-inner{max-width:1080px;margin:0 auto}
+.temoignages .section-tag{color:var(--accent)}
+.temoignages .h2{color:var(--text);margin-bottom:56px}
+.temoignages .h2 em{color:var(--accent);font-style:italic}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.review-card{background:var(--surface);border-radius:18px;padding:28px;border:1px solid var(--line)}
+.review-stars{font-size:14px;color:var(--accent);margin-bottom:12px;letter-spacing:2px}
+.review-text{font-size:14px;color:var(--text-dim);line-height:1.75;margin-bottom:18px;font-style:italic}
+.review-text::before{content:'"'}
+.review-text::after{content:'"'}
+.review-author{display:flex;align-items:center;gap:12px}
+.review-avatar{width:36px;height:36px;border-radius:50%;background:var(--accent-pale);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:14px;color:var(--accent);flex-shrink:0}
+.review-name{font-size:13px;font-weight:500;color:var(--text)}
+.review-date{font-size:11px;color:var(--text-muted)}
+
+/* ── PROCESSUS ── */
+.processus{background:var(--surface);padding:100px 52px}
+.processus-inner{max-width:1080px;margin:0 auto}
+.processus .section-tag{color:var(--accent)}
+.processus .h2{color:var(--text);margin-bottom:64px}
+.processus .h2 em{color:var(--accent);font-style:italic}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:24px;left:calc(12.5% + 24px);right:calc(12.5% + 24px);height:1px;background:var(--line);z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--accent-pale);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:18px;color:var(--accent);margin:0 auto 20px;position:relative;z-index:1;background:var(--bg)}
+.step-title{font-family:'DM Serif Display',serif;font-size:17px;color:var(--text);margin-bottom:8px}
+.step-desc{font-size:13px;color:var(--text-muted);line-height:1.65}
+
+/* ── ZONE ── */
+.zone{background:var(--bg-2);padding:80px 52px}
+.zone-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:60px}
+.zone-left{flex:1}
+.zone-left .section-tag{margin-bottom:16px}
+.zone-left .h2{color:var(--text);margin-bottom:24px}
+.zone-left .h2 em{color:var(--accent);font-style:italic}
+.zone-left p{font-size:15px;color:var(--text-dim);line-height:1.75;margin-bottom:28px}
+.zone-villes{display:flex;flex-wrap:wrap;gap:8px}
+.zone-ville{background:var(--surface);border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:12px;color:var(--text-dim)}
+.zone-map{flex:1;max-width:460px}
+.zone-map-box{width:100%;aspect-ratio:4/3;border-radius:20px;background:var(--bg-3);overflow:hidden;border:1px solid var(--line)}
+.zone-map-box iframe{width:100%;height:100%;border:0;filter:grayscale(1) contrast(1.1) opacity(.85)}
+
+/* ── FAQ ── */
+.faq{background:var(--bg);padding:100px 52px}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq .section-tag{margin-bottom:16px;color:var(--accent)}
+.faq .h2{color:var(--text);margin-bottom:48px}
+.faq .h2 em{color:var(--accent);font-style:italic}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item:first-of-type{border-top:1px solid var(--line)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:22px 0;cursor:pointer;gap:16px}
+.faq-q-text{font-family:'DM Serif Display',serif;font-size:18px;color:var(--text);line-height:1.3}
+.faq-icon{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line-strong);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,transform .3s;color:var(--text-dim);font-size:16px}
+.faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--accent);color:var(--accent)}
+.faq-a{font-size:14px;color:var(--text-dim);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease}
+.faq-item.open .faq-a{max-height:200px;padding-bottom:20px}
+
+/* ── CONTACT ── */
 .contact{background:var(--bg-2);padding:100px 52px}
 .contact-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
-.contact .section-tag{color:var(--accent)}
+.contact .section-tag{color:var(--accent);margin-bottom:16px}
 .contact .h2{color:var(--text);margin-bottom:0}
 .contact .h2 em{color:var(--accent);font-style:italic}
 .contact-info{display:flex;flex-direction:column;margin-top:36px}
-.info-row{display:flex;flex-direction:column;gap:6px;padding:24px 0;border-bottom:1px solid var(--line)}
+.info-row{display:flex;flex-direction:column;gap:5px;padding:20px 0;border-bottom:1px solid var(--line)}
 .info-row:first-child{border-top:1px solid var(--line)}
-.info-tag{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--accent)}
-.info-val{font-size:16px;color:var(--text)}
+.info-tag{font-size:9px;text-transform:uppercase;letter-spacing:3px;color:var(--accent)}
+.info-val{font-size:15px;color:var(--text)}
 .info-val a{color:var(--text);text-decoration:none;transition:color .2s}
 .info-val a:hover{color:var(--accent)}
-.contact-form{background:var(--surface);border-radius:24px;padding:48px 44px;box-shadow:0 4px 40px rgba(0,0,0,.06)}
-.form-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--text);margin-bottom:32px}
-.cta-pay{display:block;width:100%;background:var(--accent);color:#fff;border-radius:40px;padding:14px;text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:500;text-decoration:none;margin-bottom:28px;transition:background .2s}
-.cta-pay:hover{background:var(--accent-light)}
-.f-group{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
-.f-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
-.f-input{background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--text);outline:none;transition:border-color .2s;resize:none}
+.contact-form{background:var(--surface);border-radius:24px;padding:44px 40px;box-shadow:0 4px 40px rgba(0,0,0,.06)}
+.form-title{font-family:'DM Serif Display',serif;font-size:24px;color:var(--text);margin-bottom:28px}
+.cta-pay{display:block;width:100%;background:var(--accent);color:#fff;border-radius:40px;padding:15px;text-align:center;font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:500;text-decoration:none;margin-bottom:24px;transition:background .2s,transform .15s}
+.cta-pay:hover{background:var(--accent-light);transform:translateY(-1px)}
+.f-sep{text-align:center;font-size:11px;color:var(--text-muted);margin-bottom:20px;letter-spacing:1px}
+.f-group{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.f-label{font-size:10px;text-transform:uppercase;letter-spacing:1.5px;color:var(--text-muted)}
+.f-input{background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:12px 15px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--text);outline:none;transition:border-color .2s;resize:none;width:100%}
 .f-input:focus{border-color:var(--accent)}
+.f-submit{width:100%;background:var(--text);color:#fff;border:none;border-radius:40px;padding:14px;font-family:'DM Sans',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:500;cursor:pointer;margin-top:8px;transition:opacity .2s}
+.f-submit:hover{opacity:.82}
 
-/* FOOTER */
-footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;justify-content:space-between}
-.foot-brand{font-family:'DM Serif Display',serif;font-size:18px;color:rgba(255,255,255,.85)}
-.foot-copy{font-size:12px;color:rgba(255,255,255,.4)}
+/* ── FOOTER ── */
+footer{background:var(--text);padding:48px 52px}
+.footer-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.08)}
+.foot-brand-name{font-family:'DM Serif Display',serif;font-size:20px;color:rgba(255,255,255,.85);margin-bottom:6px}
+.foot-brand-sub{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.35)}
+.foot-links{display:flex;gap:32px}
+.foot-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:rgba(255,255,255,.8)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center}
+.foot-copy{font-size:12px;color:rgba(255,255,255,.3)}
+.foot-by{font-size:11px;color:rgba(255,255,255,.25)}
+.foot-by a{color:rgba(255,255,255,.35);text-decoration:none}
 
-/* REVEAL */
-.reveal{opacity:0;transform:translateY(28px)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  #nav{padding:20px 24px}
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #nav{padding:18px 24px}
   .nav-menu{display:none}
   .hero{grid-template-columns:1fr}
   .hero-left{padding:100px 24px 48px}
-  .hero-right{height:280px}
-  .trust-bar{padding:32px 24px;flex-wrap:wrap;gap:32px}
+  .hero-right{height:300px}
+  .trust-bar{padding:32px 24px;flex-wrap:wrap;gap:28px}
+  .about{padding:72px 24px}
+  .about-inner{grid-template-columns:1fr;gap:48px}
+  .about-badge{bottom:-16px;left:16px}
   .services{padding:72px 24px}
   .services-grid{grid-template-columns:1fr}
+  .temoignages{padding:72px 24px}
+  .reviews-grid{grid-template-columns:1fr}
+  .processus{padding:72px 24px}
+  .steps-grid{grid-template-columns:1fr 1fr;gap:24px}
+  .steps-grid::before{display:none}
+  .zone{padding:72px 24px}
+  .zone-inner{flex-direction:column;gap:40px}
+  .zone-map{max-width:100%;width:100%}
+  .faq{padding:72px 24px}
   .contact{padding:72px 24px}
   .contact-inner{grid-template-columns:1fr;gap:40px}
-  .contact-form{padding:32px 24px}
-  footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center}
+  .contact-form{padding:28px 20px}
+  footer{padding:40px 24px}
+  .footer-top{flex-direction:column;gap:24px}
+  .footer-bottom{flex-direction:column;gap:8px;text-align:center}
 }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav id="nav">
   <a href="#" class="nav-brand">
     <span class="nav-name">Patrick Plombier Paris 11</span>
     <span class="nav-title-tag">Plombier</span>
   </a>
   <div class="nav-menu">
+    <a href="#about">À propos</a>
     <a href="#services">Services</a>
+    <a href="#avis">Avis</a>
     <a href="#contact">Contact</a>
     <a href="#contact" class="nav-rdv">Prendre RDV</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="hero-left">
     <div id="hbadge">
       <span class="hero-badge-dot"></span>
       <span class="hero-badge-text">Disponible — Paris</span>
     </div>
-    <div id="htitle">
-      <h1>Votre plombier <em>de confiance</em> à Paris</h1>
-    </div>
-    <div id="hlead">
-      <p>Intervention rapide, tarifs transparents. Dépannage et installation pour particuliers et professionnels.</p>
-    </div>
+    <div id="htitle"><h1>Votre plombier <em>de confiance</em> à Paris</h1></div>
+    <div id="hlead"><p>Intervention rapide, tarifs transparents. Dépannage et installation pour particuliers et professionnels du 11e.</p></div>
     <div id="hctas">
       <a href="#contact" class="cta-main">Demander un devis</a>
       <a href="tel:0187588882" class="cta-tel">
@@ -170,6 +275,7 @@ footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;
     </div>
   </div>
   <div class="hero-right">
+    
     <div class="hero-monogram">PP</div>
     <div id="hcard">
       <div class="hcard-label">Note Google</div>
@@ -179,13 +285,14 @@ footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;
   </div>
 </section>
 
+<!-- TRUST BAR -->
 <section class="trust-bar">
   <div class="trust-item">
     <div class="trust-num" data-count="127" data-suffix="">127</div>
     <div class="trust-label">Avis clients</div>
   </div>
   <div class="trust-item">
-    <div class="trust-num" data-count="5" data-suffix="/5">4.8/5</div>
+    <div class="trust-num" data-count="4.8" data-suffix="/5" data-decimal="1">4.8/5</div>
     <div class="trust-label">Note Google</div>
   </div>
   <div class="trust-item">
@@ -194,10 +301,43 @@ footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;
   </div>
   <div class="trust-item">
     <div class="trust-num" data-count="48" data-suffix="h">48h</div>
-    <div class="trust-label">Délai intervention</div>
+    <div class="trust-label">Délai d'intervention</div>
   </div>
 </section>
 
+<!-- À PROPOS -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-img-wrap reveal">
+      <div class="about-img-placeholder"><div class="about-img-placeholder-mono">PP</div></div>
+      <div class="about-badge">
+        <div class="about-badge-num">127+</div>
+        <div class="about-badge-label">Clients satisfaits</div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="section-tag reveal">À propos</div>
+      <h2 class="h2 reveal">Un artisan <em>sérieux</em> au service de Paris</h2>
+      <p class="about-text reveal">Plombier indépendant depuis plus de 10 ans dans le 11e arrondissement, je réponds à toutes vos urgences et travaux de plomberie avec rigueur et professionnalisme. Chaque intervention est soignée, chaque client est unique.</p>
+      <div class="about-vals">
+        <div class="about-val reveal">
+          <div class="about-val-icon">✅</div>
+          <div class="about-val-text"><strong>Devis gratuit</strong> — sans engagement, réponse sous 24h</div>
+        </div>
+        <div class="about-val reveal">
+          <div class="about-val-icon">🛡️</div>
+          <div class="about-val-text"><strong>Garantie décennale</strong> — tous nos travaux sont assurés</div>
+        </div>
+        <div class="about-val reveal">
+          <div class="about-val-icon">⚡</div>
+          <div class="about-val-text"><strong>Intervention rapide</strong> — disponible 6j/7 pour les urgences</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
 <section class="services" id="services">
   <div class="services-inner">
     <div class="section-tag reveal">Nos prestations</div>
@@ -222,6 +362,118 @@ footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;
   </div>
 </section>
 
+<!-- TÉMOIGNAGES -->
+<section class="temoignages" id="avis">
+  <div class="temoignages-inner">
+    <div class="section-tag reveal">Avis Google</div>
+    <h2 class="h2 reveal">Ce que disent <em>nos clients</em></h2>
+    <div class="reviews-grid">
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Intervention rapide et propre pour une fuite sous évier. Très professionnel, je recommande vivement.</div>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div><div class="review-name">Marie L.</div><div class="review-date">il y a 2 semaines</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Excellent travail pour la rénovation complète de ma salle de bain. Respect des délais et du devis initial.</div>
+        <div class="review-author">
+          <div class="review-avatar">T</div>
+          <div><div class="review-name">Thomas B.</div><div class="review-date">il y a 1 mois</div></div>
+        </div>
+      </div>
+      <div class="review-card reveal">
+        <div class="review-stars">★★★★★</div>
+        <div class="review-text">Disponible le samedi matin pour une urgence. Tarifs honnêtes et travail soigné. Merci !</div>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div><div class="review-name">Sophie M.</div><div class="review-date">il y a 3 mois</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSUS -->
+<section class="processus" id="processus">
+  <div class="processus-inner">
+    <div class="section-tag reveal">Comment ça marche</div>
+    <h2 class="h2 reveal">Un processus <em>simple et rapide</em></h2>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div class="step-title">Prise de contact</div>
+        <div class="step-desc">Appelez-nous ou remplissez le formulaire. Réponse garantie sous 2h.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div class="step-title">Devis gratuit</div>
+        <div class="step-desc">Nous établissons un devis détaillé et transparent, sans surprise.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div class="step-title">Intervention</div>
+        <div class="step-desc">Notre équipe intervient à la date convenue, dans les délais prévus.</div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <div class="step-title">Satisfaction garantie</div>
+        <div class="step-desc">Travaux terminés et vérifiés. Votre satisfaction est notre priorité.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE D'INTERVENTION -->
+<section class="zone">
+  <div class="zone-inner">
+    <div class="zone-left">
+      <div class="section-tag reveal">Zone d'intervention</div>
+      <h2 class="h2 reveal">Nous intervenons <em>près de chez vous</em></h2>
+      <p class="reveal">Basés à 7 Rue Robert-Houdin, 75011 Paris, nous couvrons Paris et ses environs dans un rayon de 20 km.</p>
+      <div class="zone-villes reveal">
+        <span class="zone-ville">Paris 11e</span><span class="zone-ville">Paris 10e</span><span class="zone-ville">Paris 12e</span><span class="zone-ville">Vincennes</span><span class="zone-ville">Montreuil</span><span class="zone-ville">Bagnolet</span><span class="zone-ville">Saint-Mandé</span>
+      </div>
+    </div>
+    <div class="zone-map reveal">
+      <div class="zone-map-box">
+        <iframe src="https://maps.google.com/maps?q=7%20Rue%20Robert-Houdin%2C%2075011%20Paris&output=embed&z=13" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="section-tag reveal">FAQ</div>
+    <h2 class="h2 reveal">Questions <em>fréquentes</em></h2>
+    <div class="faq-item reveal">
+      <div class="faq-q"><span class="faq-q-text">Proposez-vous des devis gratuits ?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Oui, tous nos devis sont gratuits et sans engagement. Nous nous déplaçons pour évaluer vos besoins et vous proposer un tarif transparent.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q"><span class="faq-q-text">Quels sont vos délais d'intervention ?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Pour les urgences, nous intervenons sous 2h. Pour les travaux planifiés, nous proposons des créneaux adaptés à votre emploi du temps sous 48h.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q"><span class="faq-q-text">Êtes-vous disponibles le week-end ?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Nous sommes disponibles du lundi au samedi de 8h à 19h. Pour les urgences, un service d'astreinte est disponible le dimanche.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q"><span class="faq-q-text">Vos travaux sont-ils garantis ?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Tous nos travaux sont couverts par une garantie décennale. En cas de problème après intervention, nous revenons sans frais supplémentaires.</div>
+    </div>
+    <div class="faq-item reveal">
+      <div class="faq-q"><span class="faq-q-text">Quels modes de paiement acceptez-vous ?</span><span class="faq-icon">+</span></div>
+      <div class="faq-a">Nous acceptons les paiements par chèque, virement bancaire et carte bleue. Des facilités de paiement peuvent être proposées pour les gros travaux.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="contact-inner">
     <div>
@@ -238,67 +490,104 @@ footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;
         </div>
         <div class="info-row reveal">
           <span class="info-tag">Disponibilité</span>
-          <span class="info-val">Lun – Sam, 8h – 19h</span>
+          <span class="info-val">Lun – Sam &nbsp;·&nbsp; 8h – 19h</span>
+        </div>
+        <div class="info-row reveal">
+          <span class="info-tag">Urgences</span>
+          <span class="info-val">Intervention sous 2h · 7j/7</span>
         </div>
       </div>
     </div>
     <div class="contact-form reveal">
       <div class="form-title">Obtenez votre site</div>
       <a href="https://whop.com/checkout/plan_4iusDAZZjMvtL" class="cta-pay">Commander mon site — 297€</a>
+      <div class="f-sep">— ou envoyez un message —</div>
       <div class="f-group">
         <label class="f-label">Nom complet</label>
         <input type="text" class="f-input" placeholder="Votre nom">
       </div>
       <div class="f-group">
-        <label class="f-label">Email</label>
-        <input type="email" class="f-input" placeholder="votre@email.fr">
+        <label class="f-label">Téléphone</label>
+        <input type="tel" class="f-input" placeholder="06 00 00 00 00">
       </div>
       <div class="f-group">
         <label class="f-label">Message</label>
-        <textarea class="f-input" rows="3" placeholder="Décrivez votre projet..."></textarea>
+        <textarea class="f-input" rows="3" placeholder="Décrivez votre besoin..."></textarea>
       </div>
+      <button class="f-submit">Envoyer ma demande</button>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <span class="foot-brand">Patrick Plombier Paris 11</span>
-  <span class="foot-copy">© 2025 · Créé par ScaleTonBiz</span>
+  <div class="footer-top">
+    <div>
+      <div class="foot-brand-name">Patrick Plombier Paris 11</div>
+      <div class="foot-brand-sub">Plombier · Paris</div>
+    </div>
+    <div class="foot-links">
+      <a href="#about">À propos</a>
+      <a href="#services">Services</a>
+      <a href="#avis">Avis</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="foot-copy">© 2025 Patrick Plombier Paris 11 · Tous droits réservés</span>
+    <span class="foot-by">Site créé par <a href="#">ScaleTonBiz</a></span>
+  </div>
 </footer>
 
 <script>
-const lenis = new Lenis({duration:1.1,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+const lenis = new Lenis({duration:1.2,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
 (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0);
 
 gsap.registerPlugin(ScrollTrigger);
 
-gsap.timeline({delay:.2})
+// Hero entrance
+gsap.timeline({delay:.15})
   .to('#hbadge',{opacity:1,y:0,duration:.7,ease:'power3.out'},0)
-  .to('#htitle',{opacity:1,y:0,duration:.9,ease:'power3.out'},.12)
-  .to('#hlead',{opacity:1,y:0,duration:.8,ease:'power3.out'},.25)
-  .to('#hctas',{opacity:1,y:0,duration:.7,ease:'power3.out'},.38)
-  .to('#hcard',{opacity:1,y:0,duration:.7,ease:'back.out(1.4)'},.55);
+  .to('#htitle',{opacity:1,y:0,duration:.9,ease:'power3.out'},.1)
+  .to('#hlead',{opacity:1,y:0,duration:.8,ease:'power3.out'},.22)
+  .to('#hctas',{opacity:1,y:0,duration:.7,ease:'power3.out'},.34)
+  .to('#hcard',{opacity:1,y:0,duration:.7,ease:'back.out(1.5)'},.5);
 
+// Nav scroll
 ScrollTrigger.create({
-  start:'80px top',
+  start:'70px top',
   onEnter:()=>document.getElementById('nav').classList.add('scrolled'),
   onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')
 });
 
+// Reveal
 gsap.utils.toArray('.reveal').forEach(el=>{
   gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
 });
 
+// Counters
 gsap.utils.toArray('[data-count]').forEach(el=>{
   const n = parseFloat(el.dataset.count);
-  const suffix = el.dataset.suffix || '';
+  const suffix = el.dataset.suffix||'';
+  const decimal = el.dataset.decimal === '1';
   ScrollTrigger.create({
     trigger:el,start:'top 85%',once:true,
     onEnter:()=>{
       gsap.to({v:0},{v:n,duration:1.8,ease:'power2.out',onUpdate:function(){
-        el.textContent = (Number.isInteger(n) ? Math.round(this.targets()[0].v) : this.targets()[0].v.toFixed(1)) + suffix;
+        const v = this.targets()[0].v;
+        el.textContent = (decimal ? v.toFixed(1) : Math.round(v)) + suffix;
       }});
     }
+  });
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!wasOpen) item.classList.add('open');
   });
 });
 </script>
