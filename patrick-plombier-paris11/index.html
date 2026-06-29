@@ -1,268 +1,306 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PATRICK Plombier Paris 11</title>
-    <style>
-        body {
-            background: #0a0a0a;
-            color: #ffffff;
-            margin: 0;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
-        header {
-            background: #0a0a0a;
-            border-bottom: 1px solid #1a1a1a;
-            padding: 16px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            position: sticky;
-            top: 0;
-        }
-        .logo {
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #fff;
-        }
-        nav a {
-            color: #888;
-            margin-left: 28px;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        nav a:hover {
-            color: #fff;
-        }
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #0a0a0a 0%, #0d1a3a 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 24px;
-        }
-        .tag {
-            background: rgba(47,107,255,0.15);
-            color: #2F6BFF;
-            border: 1px solid rgba(47,107,255,0.3);
-            border-radius: 20px;
-            padding: 6px 16px;
-            font-size: 0.85rem;
-            margin-bottom: 24px;
-            display: inline-block;
-        }
-        .hero h1 {
-            font-size: clamp(2.8rem, 6vw, 5rem);
-            font-weight: 800;
-            color: #fff;
-            margin: 0 0 16px;
-            letter-spacing: -0.02em;
-        }
-        .subtitle {
-            font-size: 1.15rem;
-            color: #888888;
-            max-width: 480px;
-            line-height: 1.6;
-            margin: 0 0 36px;
-        }
-        .btn-hero {
-            background: #2F6BFF;
-            color: #fff;
-            padding: 16px 40px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.2s ease;
-        }
-        .btn-hero:hover {
-            transform: scale(1.04);
-        }
-        #services {
-            background: #111111;
-            padding: 90px 40px;
-        }
-        #services h2 {
-            text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 800;
-            color: #fff;
-            margin: 0 0 56px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 24px;
-            max-width: 1080px;
-            margin: 0 auto;
-        }
-        .card {
-            background: #1a1a1a;
-            border: 1px solid #2F6BFF;
-            border-radius: 12px;
-            padding: 28px 24px;
-        }
-        .icon {
-            width: 48px;
-            height: 48px;
-            background: rgba(47,107,255,0.12);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 18px;
-        }
-        .icon svg {
-            width: 24px;
-            height: 24px;
-            fill: #2F6BFF;
-        }
-        .card h3 {
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin: 0 0 8px;
-        }
-        .card p {
-            color: #888;
-            font-size: 0.92rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-        .stats {
-            background: #2F6BFF;
-            padding: 56px 40px;
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-        .stat {
-            text-align: center;
-        }
-        .stat-number {
-            display: block;
-            font-size: 2.4rem;
-            font-weight: 800;
-            color: #fff;
-        }
-        .stat-label {
-            display: block;
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.75);
-            margin-top: 4px;
-        }
-        #contact {
-            background: #0a0a0a;
-            padding: 90px 40px;
-            text-align: center;
-        }
-        #contact h2 {
-            text-align: center;
-            font-size: clamp(1.8rem, 4vw, 2.6rem);
-            font-weight: 800;
-            color: #fff;
-            margin: 0 0 56px;
-        }
-        .phone {
-            font-size: 1.25rem;
-            margin: 16px 0;
-            color: #fff;
-        }
-        .phone a {
-            color: #2F6BFF;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .btn-payment {
-            background: #2F6BFF;
-            color: #fff;
-            padding: 16px 40px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.2s ease;
-            margin-top: 20px;
-        }
-        footer {
-            background: #0a0a0a;
-            border-top: 1px solid #1a1a1a;
-            padding: 22px 40px;
-            text-align: center;
-            color: #888;
-            font-size: 0.84rem;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Patrick Plombier Paris 11 — Plombier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FAF8F5;
+  --bg-2:#F3EFE8;
+  --surface:#FFFFFF;
+  --accent:#2D5A3D;
+  --accent-light:#3A7A52;
+  --accent-pale:#EBF4EE;
+  --text:#1A1A18;
+  --text-dim:rgba(26,26,24,.55);
+  --text-muted:rgba(26,26,24,.35);
+  --line:rgba(26,26,24,.08);
+}
+html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-weight:300;overflow-x:hidden}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9999;opacity:.025;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:24px 52px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,box-shadow .5s}
+#nav.scrolled{background:rgba(250,248,245,.92);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line)}
+.nav-brand{display:flex;flex-direction:column;text-decoration:none}
+.nav-name{font-family:'DM Serif Display',serif;font-size:17px;color:var(--text)}
+.nav-title-tag{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-top:2px}
+.nav-menu{display:flex;align-items:center;gap:40px}
+.nav-menu a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.nav-menu a:hover{color:var(--accent)}
+.nav-rdv{background:var(--accent);color:#fff;border-radius:40px;padding:10px 24px;font-size:12px;text-transform:uppercase;letter-spacing:1px;font-weight:500;text-decoration:none;transition:background .2s}
+.nav-rdv:hover{background:var(--accent-light)}
+
+/* HERO */
+.hero{display:grid;grid-template-columns:1fr 1fr;min-height:100svh;padding-top:90px}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 52px}
+#hbadge{opacity:0;transform:translateY(16px);background:var(--accent-pale);border-radius:40px;padding:6px 16px;display:inline-flex;align-items:center;gap:8px;margin-bottom:36px;width:fit-content}
+.hero-badge-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:pulse 2s infinite}
+.hero-badge-text{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:500}
+#htitle{opacity:0;transform:translateY(24px)}
+#htitle h1{font-family:'DM Serif Display',serif;font-size:clamp(44px,4.5vw,72px);line-height:1.05;letter-spacing:-.025em;margin-bottom:24px}
+#htitle h1 em{color:var(--accent);font-style:italic}
+#hlead{opacity:0;transform:translateY(20px)}
+#hlead p{font-size:16px;color:var(--text-dim);line-height:1.75;max-width:420px;margin-bottom:44px}
+#hctas{opacity:0;transform:translateY(16px);display:flex;gap:12px;flex-wrap:wrap}
+.cta-main{background:var(--accent);color:#fff;padding:14px 32px;border-radius:40px;font-size:13px;text-transform:uppercase;letter-spacing:1px;font-weight:500;text-decoration:none;transition:background .2s}
+.cta-main:hover{background:var(--accent-light)}
+.cta-tel{border:1px solid var(--line);border-radius:40px;padding:14px 20px;font-size:14px;color:var(--text-dim);display:inline-flex;align-items:center;gap:10px;text-decoration:none;transition:border-color .2s,color .2s}
+.cta-tel:hover{border-color:var(--accent);color:var(--accent)}
+.cta-tel svg{width:14px;height:14px}
+.hero-right{background:var(--bg-2);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.hero-monogram{font-family:'DM Serif Display',serif;font-size:140px;color:var(--accent);opacity:.1;user-select:none;line-height:1}
+.hero-photo-label{position:absolute;bottom:60px;left:50%;transform:translateX(-50%);font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--text-muted)}
+#hcard{position:absolute;bottom:40px;right:40px;background:var(--surface);border-radius:16px;padding:20px 24px;box-shadow:0 8px 32px rgba(0,0,0,.08);opacity:0;transform:translateY(16px)}
+.hcard-label{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--accent);margin-bottom:8px}
+.hcard-stars{font-size:22px;color:var(--accent);margin-bottom:4px}
+.hcard-avis{font-size:12px;color:var(--text-muted)}
+
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.85)}}
+
+/* TRUST BAR */
+.trust-bar{background:var(--surface);padding:40px 52px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;justify-content:space-around;align-items:center}
+.trust-item{text-align:center}
+.trust-num{font-family:'DM Serif Display',serif;font-size:40px;color:var(--accent);line-height:1}
+.trust-label{font-size:12px;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:1px}
+
+/* SERVICES */
+.services{background:var(--accent);padding:100px 52px}
+.services-inner{max-width:1080px;margin:0 auto}
+.section-tag{font-size:11px;text-transform:uppercase;letter-spacing:3px;margin-bottom:20px;font-weight:500}
+.services .section-tag{color:rgba(255,255,255,.5)}
+.h2{font-family:'DM Serif Display',serif;font-size:clamp(32px,3.5vw,52px);line-height:1.1;letter-spacing:-.02em;margin-bottom:64px}
+.services .h2{color:#fff}
+.services .h2 em{font-style:italic;opacity:.7}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);border-radius:16px;overflow:hidden}
+.service-card{background:var(--accent);padding:40px 36px;transition:background .2s}
+.service-card:hover{background:var(--accent-light)}
+.service-icon{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:24px}
+.service-card-name{font-family:'DM Serif Display',serif;font-size:20px;color:#fff;margin-bottom:12px}
+.service-card-desc{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
+
+/* CONTACT */
+.contact{background:var(--bg-2);padding:100px 52px}
+.contact-inner{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:start}
+.contact .section-tag{color:var(--accent)}
+.contact .h2{color:var(--text);margin-bottom:0}
+.contact .h2 em{color:var(--accent);font-style:italic}
+.contact-info{display:flex;flex-direction:column;margin-top:36px}
+.info-row{display:flex;flex-direction:column;gap:6px;padding:24px 0;border-bottom:1px solid var(--line)}
+.info-row:first-child{border-top:1px solid var(--line)}
+.info-tag{font-size:10px;text-transform:uppercase;letter-spacing:3px;color:var(--accent)}
+.info-val{font-size:16px;color:var(--text)}
+.info-val a{color:var(--text);text-decoration:none;transition:color .2s}
+.info-val a:hover{color:var(--accent)}
+.contact-form{background:var(--surface);border-radius:24px;padding:48px 44px;box-shadow:0 4px 40px rgba(0,0,0,.06)}
+.form-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--text);margin-bottom:32px}
+.cta-pay{display:block;width:100%;background:var(--accent);color:#fff;border-radius:40px;padding:14px;text-align:center;font-size:13px;text-transform:uppercase;letter-spacing:2px;font-weight:500;text-decoration:none;margin-bottom:28px;transition:background .2s}
+.cta-pay:hover{background:var(--accent-light)}
+.f-group{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.f-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted)}
+.f-input{background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:13px 16px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:300;color:var(--text);outline:none;transition:border-color .2s;resize:none}
+.f-input:focus{border-color:var(--accent)}
+
+/* FOOTER */
+footer{background:var(--text);padding:40px 52px;display:flex;align-items:center;justify-content:space-between}
+.foot-brand{font-family:'DM Serif Display',serif;font-size:18px;color:rgba(255,255,255,.85)}
+.foot-copy{font-size:12px;color:rgba(255,255,255,.4)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  #nav{padding:20px 24px}
+  .nav-menu{display:none}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:100px 24px 48px}
+  .hero-right{height:280px}
+  .trust-bar{padding:32px 24px;flex-wrap:wrap;gap:32px}
+  .services{padding:72px 24px}
+  .services-grid{grid-template-columns:1fr}
+  .contact{padding:72px 24px}
+  .contact-inner{grid-template-columns:1fr;gap:40px}
+  .contact-form{padding:32px 24px}
+  footer{padding:32px 24px;flex-direction:column;gap:12px;text-align:center}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="logo">PATRICK Plombier Paris 11</div>
-        <nav>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-    <section class="hero">
-        <span class="tag">Plombier professionnel</span>
-        <h1>PATRICK Plombier à votre service</h1>
-        <p class="subtitle">7 Rue Robert-Houdin, 75011 Paris<br>Téléphone: <a href="tel:0187588882">01 87 58 88 82</a></p>
-        <a href="https://whop.com/checkout/plan_4iusDAZZjMvtL" class="btn-hero">Obtenir mon site — 297€</a>
-    </section>
-    <section id="services">
-        <h2>Nos Services</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M12 1.5a.75.75 0 01.75.75v3a.75.75 0 11-1.5 0v-3A.75.75 0 0112 1.5zm8.25 14.25a.75.75 0 01.75.75v3.75a.75.75 0 01-.75.75h-3.75a.75.75 0 110-1.5h2.25V16.5a.75.75 0 01.75-.75zM8.25 21H4.5a.75.75 0 01-.75-.75V8.25a.75.75 0 011.5 0V19.5h2.25a.75.75 0 110 1.5zm13.5-14.25H19.5v2.25a.75.75 0 11-1.5 0V5.25a.75.75 0 011.5-.75h2.25a.75.75 0 01.75.75c0 .414-.336.75-.75.75zM4.5 3.75A.75.75 0 015.25 3h3.75a.75.75 0 010 1.5H6.75v3.75a.75.75 0 11-1.5 0V4.5c0-.414.336-.75.75-.75zm7.5 7.5a.75.75 0 110 1.5h-3a.75.75 0 110-1.5h3zm0 4.5a.75.75 0 110 1.5h-3a.75.75 0 110-1.5h3zm0 4.5a.75.75 0 110 1.5h-3a.75.75 0 110-1.5h3zm7.5-9a.75.75 0 010-1.5h-3.75a.75.75 0 010 1.5H19.5v2.25a.75.75 0 01-1.5 0V8.25c0-.414.336-.75.75-.75zM6 9a.75.75 0 110 1.5H3v1.5c0 .414-.336.75-.75.75S1.5 12.414 1.5 12v-3A.75.75 0 012.25 8h1.5a.75.75 0 01.75.75zm12 3a.75.75 0 010-1.5h3.75a.75.75 0 010 1.5H18v2.25c0 .414-.336.75-.75.75s-.75-.336-.75-.75V12zm-8.25 3c.414 0 .75.336.75.75v3a.75.75 0 01-1.5 0v-3c0-.414.336-.75.75-.75z"></path></svg>
-                </div>
-                <h3>Dépannage urgence 24h/24</h3>
-                <p>Intervention rapide toute heure.</p>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M19.768 10l2.243 2.242a.75.75 0 01-1.06 1.061l-2.243-2.242A8.925 8.925 0 0012 9a8.925 8.925 0 00-6.708 2.303l-2.243 2.243a.75.75 0 01-1.06-1.061L6.708 9A8.925 8.925 0 0112 7c2.012 0 3.94.744 5.434 2.09L19.768 10zM9.237 13a9.143 9.143 0 009.492 9.491C21.715 22.491 22 21.547 22 21V7a5 5 0 00-5-5H7a5 5 0 00-5 5v14c0 .548.014 1.472 1.493 2.491A9.143 9.143 0 0012 14c1.158 0 2.267-.274 3.237-.764zm-6-4.407a1 1 0 111.493-.832.502.502 0 00.758-.102.978.978 0 011.443.057c.077.099.148.196.216.294a8.897 8.897 0 018.341-.308c.178.172.348.355.514.551a1 1 0 0-0.58 1.222 2 2 0 00-.664-1.052c-.154-.154-.317-.296-.484-.42A7.11 7.11 0 009.569 11a7.062 7.062 0 00-2.844.563A3.587 3.587 0 005.236 10a9.13 9.13 0 00-2.8.508z"></path></svg>
-                </div>
-                <h3>Installation sanitaire</h3>
-                <p>Pose de baignoire, douche, lavabo.</p>
-            </div>
-            <div class="card">
-                <div class="icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M18 12.552a3.003 3.003 0 01-3 3h-2c0 1.197-.307 2.344-.877 3.341a1 1 0 11-1.632-1.163c.346-.591.51-1.273.509-1.934h2c.552 0 1-.449 1-1a1 1 0 112 0c0 1.103-.896 2-2 2h-1c0 .668-.265 1.316-.75 1.75a1 1 0 01-1.416-.015l-.943-.943a1 1 0 11.83-1.774c.226.495.627.8 1.083.992.456.194.756.6.756 1.2H15a5 5 0 005-5 1 1 0 112 0z"></path></svg>
-                </div>
-                <h3>Détection et réparation de fuites</h3>
-                <p>Intervention précise sur les fuites.</p>
-            </div>
-        </div>
-    </section>
-    <div class="stats">
-        <div class="stat">
-            <span class="stat-number">5/5</span>
-            <span class="stat-label">étoiles Google</span>
-        </div>
-        <div class="stat">
-            <span class="stat-number">19</span>
-            <span class="stat-label">avis clients</span>
-        </div>
-        <div class="stat">
-            <span class="stat-number">24/24</span>
-            <span class="stat-label">Disponible</span>
-        </div>
+
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-name">Patrick Plombier Paris 11</span>
+    <span class="nav-title-tag">Plombier</span>
+  </a>
+  <div class="nav-menu">
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="#contact" class="nav-rdv">Prendre RDV</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div id="hbadge">
+      <span class="hero-badge-dot"></span>
+      <span class="hero-badge-text">Disponible — Paris</span>
     </div>
-    <section id="contact">
-        <h2>Contactez-nous</h2>
-        <p class="phone">Téléphone: <a href="tel:0187588882">01 87 58 88 82</a></p>
-        <a href="https://whop.com/checkout/plan_4iusDAZZjMvtL" class="btn-payment">Obtenir mon site — 297€</a>
-    </section>
-    <footer>
-        © 2023 PATRICK Plombier Paris 11. Tous droits réservés.
-    </footer>
+    <div id="htitle">
+      <h1>Votre plombier <em>de confiance</em> à Paris</h1>
+    </div>
+    <div id="hlead">
+      <p>Intervention rapide, tarifs transparents. Dépannage et installation pour particuliers et professionnels.</p>
+    </div>
+    <div id="hctas">
+      <a href="#contact" class="cta-main">Demander un devis</a>
+      <a href="tel:0187588882" class="cta-tel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.79 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.72-.72a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        01 87 58 88 82
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-monogram">PP</div>
+    <div id="hcard">
+      <div class="hcard-label">Note Google</div>
+      <div class="hcard-stars">★★★★★</div>
+      <div class="hcard-avis">4.8/5 · 127 avis vérifiés</div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-num" data-count="127" data-suffix="">127</div>
+    <div class="trust-label">Avis clients</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" data-count="5" data-suffix="/5">4.8/5</div>
+    <div class="trust-label">Note Google</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" data-count="10" data-suffix="ans+">10ans+</div>
+    <div class="trust-label">D'expérience</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" data-count="48" data-suffix="h">48h</div>
+    <div class="trust-label">Délai intervention</div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="services-inner">
+    <div class="section-tag reveal">Nos prestations</div>
+    <h2 class="h2 reveal">Ce que nous <em>faisons pour vous</em></h2>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🔧</div>
+        <div class="service-card-name">Dépannage urgent</div>
+        <div class="service-card-desc">Intervention en moins de 2h pour fuites, canalisations bouchées et pannes sanitaires.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🚿</div>
+        <div class="service-card-name">Rénovation salle de bain</div>
+        <div class="service-card-desc">Conception et installation complète : douche, baignoire, robinetterie haut de gamme.</div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🏗️</div>
+        <div class="service-card-name">Installation & mise aux normes</div>
+        <div class="service-card-desc">Chauffe-eau, cumulus, chauffage central et mise en conformité de vos installations.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-tag reveal">Nous contacter</div>
+      <h2 class="h2 reveal">Parlons de votre <em>projet</em></h2>
+      <div class="contact-info">
+        <div class="info-row reveal">
+          <span class="info-tag">Téléphone</span>
+          <span class="info-val"><a href="tel:0187588882">01 87 58 88 82</a></span>
+        </div>
+        <div class="info-row reveal">
+          <span class="info-tag">Adresse</span>
+          <span class="info-val">7 Rue Robert-Houdin, 75011 Paris</span>
+        </div>
+        <div class="info-row reveal">
+          <span class="info-tag">Disponibilité</span>
+          <span class="info-val">Lun – Sam, 8h – 19h</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-title">Obtenez votre site</div>
+      <a href="https://whop.com/checkout/plan_4iusDAZZjMvtL" class="cta-pay">Commander mon site — 297€</a>
+      <div class="f-group">
+        <label class="f-label">Nom complet</label>
+        <input type="text" class="f-input" placeholder="Votre nom">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Email</label>
+        <input type="email" class="f-input" placeholder="votre@email.fr">
+      </div>
+      <div class="f-group">
+        <label class="f-label">Message</label>
+        <textarea class="f-input" rows="3" placeholder="Décrivez votre projet..."></textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="foot-brand">Patrick Plombier Paris 11</span>
+  <span class="foot-copy">© 2025 · Créé par ScaleTonBiz</span>
+</footer>
+
+<script>
+const lenis = new Lenis({duration:1.1,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
+(function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0);
+
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.timeline({delay:.2})
+  .to('#hbadge',{opacity:1,y:0,duration:.7,ease:'power3.out'},0)
+  .to('#htitle',{opacity:1,y:0,duration:.9,ease:'power3.out'},.12)
+  .to('#hlead',{opacity:1,y:0,duration:.8,ease:'power3.out'},.25)
+  .to('#hctas',{opacity:1,y:0,duration:.7,ease:'power3.out'},.38)
+  .to('#hcard',{opacity:1,y:0,duration:.7,ease:'back.out(1.4)'},.55);
+
+ScrollTrigger.create({
+  start:'80px top',
+  onEnter:()=>document.getElementById('nav').classList.add('scrolled'),
+  onLeaveBack:()=>document.getElementById('nav').classList.remove('scrolled')
+});
+
+gsap.utils.toArray('.reveal').forEach(el=>{
+  gsap.to(el,{opacity:1,y:0,duration:.85,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%',once:true}});
+});
+
+gsap.utils.toArray('[data-count]').forEach(el=>{
+  const n = parseFloat(el.dataset.count);
+  const suffix = el.dataset.suffix || '';
+  ScrollTrigger.create({
+    trigger:el,start:'top 85%',once:true,
+    onEnter:()=>{
+      gsap.to({v:0},{v:n,duration:1.8,ease:'power2.out',onUpdate:function(){
+        el.textContent = (Number.isInteger(n) ? Math.round(this.targets()[0].v) : this.targets()[0].v.toFixed(1)) + suffix;
+      }});
+    }
+  });
+});
+</script>
 </body>
 </html>
